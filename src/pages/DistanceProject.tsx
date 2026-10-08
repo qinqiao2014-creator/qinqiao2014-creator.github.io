@@ -13,6 +13,8 @@ import {
   Cpu,
   Play,
   Film,
+  Music,
+  ListMusic,
   ExternalLink,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -25,6 +27,8 @@ import { Footer } from '../sections/Footer';
 //     赛事主题 A Gift for ____）
 const BILIBILI_VIDEO = 'https://www.bilibili.com/video/BV14f3q6mE8R/';
 const TRIPOTHON_VIDEO = 'https://www.bilibili.com/video/BV15JHp65EQh/';
+// 概念专辑《DISTANCE》已在网易云音乐发行（2026-10-02，12 轨）
+const ALBUM_URL = 'https://music.163.com/#/album?id=401724420';
 const SITE_URL = 'https://www.distance3d.xyz/';
 const XR_URL = 'https://xr.distance3d.xyz/';
 
@@ -33,15 +37,27 @@ const t = {
     back: '返回首页',
     title: 'distance',
     subtitle: '光年尺度下，人与人之间关系的距离',
-    tag: 'AdventureX 2026 · PICO 赛道第二名',
+    tag: 'AdventureX 2026 PICO 赛道第二名 · Tripothon S1 参赛作品',
     desc: 'distance 是一个 AI-native 的动态关系宇宙：你的出生、地点、教育、工作、项目、技能、记忆，以及你和他人的双向行为，会被编译成个人图谱，持续影响星球质量、关系强度、空间距离与 3D 宇宙布局——关系变淡，那颗星球就真的变暗、漂远。',
     status: '团队作品 · 主站 distance3d.xyz · XR 出口 xr.distance3d.xyz',
     cta: '产品介绍视频',
     ctaSite: '访问主站',
     ctaXr: '打开 XR',
 
-    awardTitle: '比赛成绩',
-    award: 'AdventureX 2026 — PICO 赛道 第二名 · 优胜 Web 应用创作者',
+    awardTitle: '赛事',
+    awardDesc: '同一个世界，两次送出去比赛——第一版拿奖，这一版是 rebuilt 之后的重投。',
+    awards: [
+      {
+        badge: 'v1 · 已获奖',
+        title: 'AdventureX 2026',
+        note: 'PICO 赛道 第二名 · 优胜 Web 应用创作者。distance 的第一版在这里完成并拿奖。',
+      },
+      {
+        badge: 'v2 · 评审中',
+        title: 'Tripothon S1',
+        note: 'Tripo AI 主办的全球首届「世界构建黑客松」，主题 A Gift for ____——创造一个世界，把它当作礼物送给某个人。distance 以现在的完整形态（三层尺度 + 家园 + 生态星球）参赛，评审进行中，10 月 25 日揭晓。',
+      },
+    ],
 
     whatTitle: '这是什么',
     whatDesc:
@@ -64,6 +80,34 @@ const t = {
         cta: '去 B 站观看',
         url: TRIPOTHON_VIDEO,
       },
+    ],
+
+    worksTitle: '影像与音乐',
+    worksDesc: '这个世界不只跑在浏览器里——它还有一支 MV，还有一整张概念专辑。',
+    works: [
+      {
+        badge: 'MV',
+        label: '《回信》MV',
+        note: '专辑终曲的影像版本。第一句问候被送进深空之后，十二首曲目走完这条路，最后一首是回信：收星星的人，回信给送星星的人。',
+        cta: '观看',
+        url: '',
+      },
+      {
+        badge: '概念专辑 · 已发行',
+        label: 'DISTANCE · 12 轨',
+        note: '2026 年 10 月 2 日在网易云音乐发行，36 分 38 秒。三幕走完「仰望与坍缩 → 守护 → 坠落与代价」，终曲「回信」收束——整条线是「发问 → 回信」。音乐由 AI 生成（StepFun StepAudio 3 Music），真人逐首选定。',
+        cta: '去网易云听',
+        url: ALBUM_URL,
+      },
+    ],
+    albumTitle: '专辑结构',
+    albumMeta: '12 轨 · 36 分 38 秒 · 艺人 阿早 · 2026-10-02 发行',
+    albumActs: [
+      { name: 'Intro · 开篇', desc: '开篇主题曲，全专辑由此开场' },
+      { name: '第一幕 · 仰望与坍缩', desc: '发问 / 闪烁之后 / 物理学不存在了 / 凝视' },
+      { name: '第二幕 · 守护', desc: '执剑 / 送星星的人' },
+      { name: '第三幕 · 坠落与代价', desc: '前进四 / 俗人 / 最后一个物理学家 / 不择手段' },
+      { name: '终曲 · 回信', desc: '收星星的人，回信给送星星的人' },
     ],
 
     demoTitle: '主流程',
@@ -148,11 +192,21 @@ const t = {
     ],
 
     teamTitle: '团队',
+    teamNote: '两支比赛队伍，成员不完全重合',
+    teamGroupA: 'AdventureX 2026',
+    teamGroupANote: 'PICO 赛道第二名',
     team: [
       { name: '周雨涵', role: '产品 / UI / UX', color: '#ffc08e' },
       { name: '詹丽', role: '视觉传达', color: '#e9818d' },
       { name: '丁羿然', role: '技术开发', color: '#5d477f' },
       { name: '阿早', role: '技术开发', color: '#ffe0bd' },
+    ],
+    teamGroupB: 'Tripothon S1',
+    teamGroupBNote: 'Tripo AI 世界构建黑客松 · 主题 A Gift for ____',
+    teamB: [
+      { name: '阿早', role: '技术开发', color: '#ffe0bd' },
+      { name: '史登会', role: '队员', color: '#8fb8e8' },
+      { name: '梁潇', role: '队员', color: '#c9a6e8' },
     ],
 
   },
@@ -160,15 +214,27 @@ const t = {
     back: 'Back to Home',
     title: 'distance',
     subtitle: 'The Distance Between People, at the Scale of Light-Years',
-    tag: 'AdventureX 2026 · PICO Track 2nd Place',
+    tag: 'AdventureX 2026 — 2nd Place, PICO Track · Tripothon S1 Entry',
     desc: 'distance is an AI-native dynamic relationship universe. Your birth, location, education, work, projects, skills, memories — and the two-way behavior between you and others — are compiled into a personal graph that continuously drives planet mass, relationship strength, spatial distance and the 3D universe layout. When a relationship fades, that planet really does dim and drift away.',
     status: 'Team Project · Site distance3d.xyz · XR at xr.distance3d.xyz',
     cta: 'Product Video',
     ctaSite: 'Visit Site',
     ctaXr: 'Open XR',
 
-    awardTitle: 'Competition Result',
-    award: 'AdventureX 2026 — PICO Track 2nd Place · Outstanding Web App Creator',
+    awardTitle: 'Competitions',
+    awardDesc: 'One world, sent to two competitions — the first version won; this one is the rebuilt re-entry.',
+    awards: [
+      {
+        badge: 'v1 · Won',
+        title: 'AdventureX 2026',
+        note: '2nd Place, PICO Track · Outstanding Web App Creator. The first version of distance was completed and awarded here.',
+      },
+      {
+        badge: 'v2 · In review',
+        title: 'Tripothon S1',
+        note: "Tripo AI's first global world-building hackathon, themed A Gift for ____ — build a world and give it to someone as a gift. distance entered in its current full form (three scales, homesteads, ecological planets); judging is underway and winners are announced on October 25.",
+      },
+    ],
 
     whatTitle: 'What Is This',
     whatDesc:
@@ -191,6 +257,34 @@ const t = {
         cta: 'Watch on Bilibili',
         url: TRIPOTHON_VIDEO,
       },
+    ],
+
+    worksTitle: 'Film & Music',
+    worksDesc: 'This world does not live only in a browser — it has a music video, and a whole concept album.',
+    works: [
+      {
+        badge: 'Music Video',
+        label: '“Hui Xin” (The Reply) — MV',
+        note: 'The visual version of the album’s closing track. After the first greeting is sent into deep space and twelve tracks walk that road, the last one is the reply: the one who received the star writes back to the one who sent it.',
+        cta: 'Watch',
+        url: '',
+      },
+      {
+        badge: 'Concept Album · Released',
+        label: 'DISTANCE · 12 tracks',
+        note: 'Released on NetEase Cloud Music on 2 October 2026, running 36 minutes 38 seconds. Three acts move through "looking up and collapse", "guardianship", and "falling and its price", closing with "The Reply" — the whole arc runs from question to reply. Music generated with AI (StepFun StepAudio 3 Music), with takes chosen track by track by a human.',
+        cta: 'Listen on NetEase',
+        url: ALBUM_URL,
+      },
+    ],
+    albumTitle: 'Album Structure',
+    albumMeta: '12 tracks · 36:38 · Artist: Zaosu · released 2026-10-02',
+    albumActs: [
+      { name: 'Intro', desc: 'Opening theme — the album begins here' },
+      { name: 'Act I · Looking Up and Collapse', desc: 'Asking / After the Flicker / Physics No Longer Exists / The Gaze' },
+      { name: 'Act II · Guardianship', desc: 'Holding the Sword / The One Who Sent the Star' },
+      { name: 'Act III · Falling and Its Price', desc: 'Forward Four / An Ordinary Man / The Last Physicist / By Any Means' },
+      { name: 'Finale · The Reply', desc: 'The one who received the star writes back to the one who sent it' },
     ],
 
     demoTitle: 'Main Flow',
@@ -275,11 +369,21 @@ const t = {
     ],
 
     teamTitle: 'Team',
+    teamNote: 'Two competition squads with partially overlapping members',
+    teamGroupA: 'AdventureX 2026',
+    teamGroupANote: '2nd place, PICO track',
     team: [
       { name: 'Zhou Yuhan', role: 'Product / UI / UX', color: '#ffc08e' },
       { name: 'Zhan Li', role: 'Visual Design', color: '#e9818d' },
       { name: 'Ding Yiran', role: 'Engineering', color: '#5d477f' },
       { name: 'Zaosusu', role: 'Engineering', color: '#ffe0bd' },
+    ],
+    teamGroupB: 'Tripothon S1',
+    teamGroupBNote: "Tripo AI world-building hackathon · theme: A Gift for ____",
+    teamB: [
+      { name: 'Zaosusu', role: 'Engineering', color: '#ffe0bd' },
+      { name: 'Shi Denghui', role: 'Team member', color: '#8fb8e8' },
+      { name: 'Liang Xiao', role: 'Team member', color: '#c9a6e8' },
     ],
 
   },
@@ -356,14 +460,28 @@ export function DistanceProject() {
           </div>
         </div>
 
-        {/* Award */}
+        {/* Competitions —— 两届赛事 */}
         <div className="max-w-content mx-auto px-5 mb-16">
-          <div className="p-6 rounded border border-[#0f8b8d]/20 bg-[#0f8b8d]/5">
-            <h2 className="font-noto font-bold text-lg text-text-primary mb-3 flex items-center gap-2">
-              <Award className="w-5 h-5 text-[#0f8b8d]" />
-              {c.awardTitle}
-            </h2>
-            <p className="font-noto text-sm text-text-secondary">{c.award}</p>
+          <h2 className="font-noto font-bold text-xl text-text-primary mb-2 flex items-center gap-2">
+            <Award className="w-5 h-5 text-[#0f8b8d]" />
+            {c.awardTitle}
+          </h2>
+          <p className="font-noto text-sm text-text-muted mb-6">{c.awardDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {c.awards.map((a, i) => (
+              <div
+                key={i}
+                className="p-5 rounded border border-border-custom bg-bg-secondary"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-noto bg-[#0f8b8d]/12 text-[#0f8b8d] border border-[#0f8b8d]/25">
+                    {a.badge}
+                  </span>
+                  <h3 className="font-noto font-semibold text-base text-text-primary">{a.title}</h3>
+                </div>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed">{a.note}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -408,6 +526,72 @@ export function DistanceProject() {
                 </span>
               </a>
             ))}
+          </div>
+        </div>
+
+        {/* Film & Music —— MV 与概念专辑 */}
+        <div className="max-w-content mx-auto px-5 mb-16">
+          <h2 className="font-noto font-bold text-xl text-text-primary mb-2 flex items-center gap-2">
+            <Music className="w-5 h-5 text-[#6cbcb2]" />
+            {c.worksTitle}
+          </h2>
+          <p className="font-noto text-sm text-text-muted mb-6">{c.worksDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {c.works.map((w, i) => {
+              const inner = (
+                <>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="inline-block px-2 py-0.5 rounded text-xs font-noto bg-[#0f8b8d]/12 text-[#0f8b8d] border border-[#0f8b8d]/25">
+                      {w.badge}
+                    </span>
+                    <h3 className="font-noto font-semibold text-base text-text-primary">{w.label}</h3>
+                  </div>
+                  <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">{w.note}</p>
+                  {w.url ? (
+                    <span className="inline-flex items-center gap-2 font-noto text-sm text-[#9bd8cf] group-hover:text-[#6cbcb2] transition-colors duration-200">
+                      <Play className="w-3.5 h-3.5" />
+                      {w.cta}
+                      <ExternalLink className="w-3 h-3" />
+                    </span>
+                  ) : null}
+                </>
+              );
+              return w.url ? (
+                <a
+                  key={i}
+                  href={w.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block p-5 rounded border border-border-custom bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors duration-200"
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div
+                  key={i}
+                  className="block p-5 rounded border border-border-custom bg-bg-secondary"
+                >
+                  {inner}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 专辑结构 */}
+          <div className="mt-6 p-5 rounded border border-border-custom bg-bg-secondary">
+            <h3 className="font-noto font-semibold text-base text-text-primary mb-1 flex items-center gap-2">
+              <ListMusic className="w-4 h-4 text-[#6cbcb2]" />
+              {c.albumTitle}
+            </h3>
+            <p className="font-noto text-xs text-text-muted mb-4">{c.albumMeta}</p>
+            <div className="space-y-3">
+              {c.albumActs.map((act, i) => (
+                <div key={i} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                  <span className="font-noto text-sm text-text-primary sm:w-44 sm:shrink-0">{act.name}</span>
+                  <span className="font-noto text-sm text-text-muted">{act.desc}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -536,31 +720,44 @@ export function DistanceProject() {
           </div>
         </div>
 
-        {/* Team */}
+        {/* Team —— 两支比赛队伍分组 */}
         <div className="max-w-content mx-auto px-5 mb-16">
-          <h2 className="font-noto font-bold text-xl text-text-primary mb-6 flex items-center gap-2">
+          <h2 className="font-noto font-bold text-xl text-text-primary mb-2 flex items-center gap-2">
             <Users className="w-5 h-5 text-[#6cbcb2]" />
             {c.teamTitle}
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {c.team.map((member, i) => (
-              <div
-                key={i}
-                className="p-5 rounded border border-border-custom bg-bg-secondary text-center"
-              >
-                <div
-                  className="w-12 h-12 rounded-full border-2 mx-auto mb-3 flex items-center justify-center text-lg font-bold"
-                  style={{ borderColor: member.color }}
-                >
-                  <span style={{ color: member.color }}>{member.name[0]}</span>
-                </div>
-                <h4 className="font-noto font-semibold text-sm text-text-primary mb-1">
-                  {member.name}
-                </h4>
-                <p className="font-noto text-xs text-text-muted">{member.role}</p>
+          <p className="font-noto text-sm text-text-muted mb-6">{c.teamNote}</p>
+
+          {[
+            { name: c.teamGroupA, note: c.teamGroupANote, members: c.team },
+            { name: c.teamGroupB, note: c.teamGroupBNote, members: c.teamB },
+          ].map((group, gi) => (
+            <div key={gi} className={gi > 0 ? 'mt-8' : ''}>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+                <h3 className="font-noto font-semibold text-base text-text-primary">{group.name}</h3>
+                <span className="font-noto text-xs text-text-muted">{group.note}</span>
               </div>
-            ))}
-          </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {group.members.map((member, i) => (
+                  <div
+                    key={i}
+                    className="p-5 rounded border border-border-custom bg-bg-secondary text-center"
+                  >
+                    <div
+                      className="w-12 h-12 rounded-full border-2 mx-auto mb-3 flex items-center justify-center text-lg font-bold"
+                      style={{ borderColor: member.color }}
+                    >
+                      <span style={{ color: member.color }}>{member.name[0]}</span>
+                    </div>
+                    <h4 className="font-noto font-semibold text-sm text-text-primary mb-1">
+                      {member.name}
+                    </h4>
+                    <p className="font-noto text-xs text-text-muted">{member.role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
 
