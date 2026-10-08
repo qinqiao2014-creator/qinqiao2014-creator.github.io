@@ -6,7 +6,7 @@ import { useLang } from '../../context/LanguageContext';
 const navt = {
   zh: {
     home: '阿早',
-    projects: '项目',
+    projects: '我的项目',
     library: 'Skill',
     garden: '合作项目',
     ogcp: 'OGCP',
@@ -19,7 +19,7 @@ const navt = {
   },
   en: {
     home: 'Zaosusu',
-    projects: 'Projects',
+    projects: 'My Projects',
     library: 'Skill',
     garden: 'Collaborations',
     ogcp: 'OGCP',
