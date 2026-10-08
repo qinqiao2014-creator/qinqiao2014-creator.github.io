@@ -62,6 +62,7 @@ type Translation = {
   skills: { name: string; tag: string; desc: string; stars: number; url: string }[];
   gardenTitle: string;
   gardenDesc: string;
+  gardenKinds: { name: string; desc: string }[];
   gardenItems: string[];
 };
 
@@ -197,6 +198,10 @@ const t: Record<'zh' | 'en', Translation> = {
     ],
     gardenTitle: '小径分岔的花园',
     gardenDesc: '在别人的迷宫里落子——有些世界由他人构筑，我在其中添过砖。',
+    gardenKinds: [
+      { name: '商业委托', desc: '为甲方构筑的系统，匿名脱敏呈现' },
+      { name: '开源贡献', desc: '留在公开仓库的提交，可点开核对' },
+    ],
     gardenItems: [
       'AgentBehaviorBench 智能体接入',
       'AI 眼镜 · 会展导览',
@@ -332,6 +337,10 @@ const t: Record<'zh' | 'en', Translation> = {
     ],
     gardenTitle: 'The Garden of Forking Paths',
     gardenDesc: "Moves made inside others' mazes — worlds built by others, where I laid a few bricks.",
+    gardenKinds: [
+      { name: 'Commissioned', desc: 'Systems built for clients, shown anonymized' },
+      { name: 'Open Source', desc: 'Commits left in public repositories — clickable' },
+    ],
     gardenItems: [
       'AgentBehaviorBench Agent Onboarding',
       'AI Glasses · Exhibition Guide',
@@ -815,17 +824,19 @@ export function Home() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-8 p-6 md:p-8">
               <div>
-                <span className="inline-block px-2.5 py-0.5 rounded text-xs font-noto mb-4 bg-[#6cbcb2]/10 text-[#6cbcb2] border border-[#6cbcb2]/30">
-                  {lang === 'zh' ? '商业委托 · 开源贡献' : 'Commissioned · Open Source'}
-                </span>
-                <h3 className="font-noto font-bold text-lg md:text-xl text-text-primary mb-3 group-hover:text-[#9bd8cf] transition-colors">
-                  {lang === 'zh' ? '在别人的迷宫里落子' : "Moves made inside others' mazes"}
-                </h3>
-                <p className="font-noto text-sm text-text-secondary leading-relaxed mb-5">
-                  {lang === 'zh'
-                    ? '为甲方构筑的系统（匿名脱敏），以及在公开仓库里留下的提交（可点开核对）。'
-                    : 'Systems built for clients (anonymized), plus commits left in public repositories — clickable and verifiable.'}
-                </p>
+                <div className="flex flex-col gap-5 mb-6">
+                  {c.gardenKinds.map((k) => (
+                    <div key={k.name} className="flex gap-3">
+                      <span className="mt-2 w-1 h-1 rounded-full bg-[#6cbcb2] shrink-0" />
+                      <div>
+                        <h3 className="font-noto font-bold text-base text-text-primary mb-1 group-hover:text-[#9bd8cf] transition-colors">
+                          {k.name}
+                        </h3>
+                        <p className="font-noto text-sm text-text-secondary leading-relaxed">{k.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
                 <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-[#9bd8cf] transition-colors">
                   <span className="font-noto">{lang === 'zh' ? '查看全部' : 'View All'}</span>
                   <ArrowRight className="w-3 h-3" />
