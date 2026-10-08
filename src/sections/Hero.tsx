@@ -35,7 +35,7 @@ export function Hero() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <a
-            href="https://github.com/Zaosusu/ogcp-pilot"
+            href="https://github.com/qinqiao2014-creator/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border border-[#6cbcb2]/50 bg-[#6cbcb2]/10 rounded text-text-primary hover:border-[#9bd8cf] hover:bg-[#6cbcb2]/15 transition-colors duration-200"

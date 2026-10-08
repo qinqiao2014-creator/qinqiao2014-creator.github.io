@@ -73,9 +73,9 @@ const works: WorkItem[] = [
     ],
     tech: ['LangGraph', 'Docker', 'Python', 'Agent Evaluation', 'OpenTelemetry', 'Semgrep'],
     status:
-      '4 个 Pull Request 已提交（3 个 Agent 接入 + 1 个工具链修复），均等待维护者评审与合并；其中 1 个已通过维护者的完整复测，结论为 ready to merge。另对 10 个开放任务逐一验证输入契约后做了可行性判定，均给出代码级结论。',
+      '4 个 Pull Request 已提交（3 个 Agent 接入 + 1 个工具链修复）：其中 #336（cra-agent 接入）已合并进 main，其余 #335、#337（接入）+ #338（工具链修复）仍在等待维护者评审与合并。另对 10 个开放任务逐一验证输入契约后做了可行性判定，均给出代码级结论。',
     statusEn:
-      'Four pull requests submitted (three agent onboardings plus one toolchain fix), all awaiting maintainer review and merge; one has passed a full maintainer re-test with a "ready to merge" verdict. Separately, ten open tasks were assessed for feasibility — each verified against its input contract, with a code-level conclusion for each.',
+      'Four pull requests submitted (three agent onboardings plus one toolchain fix): #336 (cra-agent onboarding) has been merged into main; the other three — #335 and #337 (onboardings) and #338 (toolchain fix) — remain awaiting maintainer review and merge. Separately, ten open tasks were assessed for feasibility — each verified against its input contract, with a code-level conclusion for each.',
     links: [
       { label: 'DefuzeX-AI/AgentBehaviorBench', url: 'https://github.com/DefuzeX-AI/AgentBehaviorBench', kind: 'repo' },
       { label: 'PR #335', url: 'https://github.com/DefuzeX-AI/AgentBehaviorBench/pull/335', kind: 'pr' },

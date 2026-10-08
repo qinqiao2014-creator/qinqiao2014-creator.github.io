@@ -106,7 +106,7 @@ export function ProjectOverview() {
         </div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-10">
           <a
-            href="https://github.com/Zaosusu/ogcp-pilot"
+            href="https://github.com/qinqiao2014-creator/ogcp-pilot"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded border border-border-custom px-4 py-2.5 text-text-primary hover:border-[#9bd8cf] hover:text-[#9bd8cf] transition-colors duration-200 group"

@@ -1,10 +1,10 @@
-# zaosusu.github.io
+# qinqiao2014-creator.github.io
 
 OpenGuitarChordProject 个人主页 - 独立AI研究者阿早的项目展示网站。
 
 ## 在线访问
 
-https://zaosusu.github.io
+https://qinqiao2014-creator.github.io
 
 ## 项目简介
 
@@ -49,7 +49,7 @@ npm run build
 
 ## 部署到 GitHub Pages
 
-1. 创建 GitHub 仓库 `zaosusu.github.io`
+1. 创建 GitHub 仓库 `qinqiao2014-creator.github.io`
 2. 将代码推送到仓库
 3. 在仓库设置中启用 GitHub Pages
 4. 选择部署分支（通常是 `main` 或 `gh-pages`）

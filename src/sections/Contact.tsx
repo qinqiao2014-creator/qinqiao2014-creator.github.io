@@ -58,11 +58,11 @@ export function Contact() {
               <Mail className="w-4 h-4" />
               <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">qinqiao2014@gmail.com</span>
             </a>
-            <a href="https://github.com/zaosusu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">
+            <a href="https://github.com/qinqiao2014-creator" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">
               <Github className="w-4 h-4" />
-              <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">github.com/zaosusu</span>
+              <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">github.com/qinqiao2014-creator</span>
             </a>
-            <a href="https://github.com/zaosusu/ogcp-pilot/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">
+            <a href="https://github.com/qinqiao2014-creator/ogcp-pilot/discussions" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">
               <MessageCircle className="w-4 h-4" />
               <span className="font-noto text-sm border-b border-transparent group-hover:border-text-secondary">GitHub Discussions</span>
             </a>
@@ -70,7 +70,7 @@ export function Contact() {
           <div>
             <h3 className="font-bold text-text-primary mb-4">{c.followTitle}</h3>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-center gap-6">
-              <a href="https://github.com/Zaosusu/ogcp-pilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-secondary hover:text-[#9bd8cf] transition-colors duration-200">
+              <a href="https://github.com/qinqiao2014-creator/ogcp-pilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-text-secondary hover:text-[#9bd8cf] transition-colors duration-200">
                 <Star className="w-4 h-4" />
                 <span className="font-noto text-sm">{c.star}</span>
               </a>

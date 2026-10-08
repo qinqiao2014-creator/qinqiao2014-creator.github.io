@@ -64,7 +64,7 @@ const t = {
     clientsTitle: '多端客户端',
     clientsDesc: '同一个产品，四种形态覆盖不同用户场景，各自独立运行又共享 Agent 编排和角色协议。',
     clients: [
-      { icon: 'desktop', title: '桌面端（开源）', desc: '浏览器前端 + Electron 桌面壳 + 本地 Node API + SQLite。自部署模型或远程模型接口。AGPL-3.0-only 开源。', tag: '开源', repo: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { icon: 'desktop', title: '桌面端（开源）', desc: '浏览器前端 + Electron 桌面壳 + 本地 Node API + SQLite。自部署模型或远程模型接口。AGPL-3.0-only 开源。', tag: '开源', repo: 'https://github.com/qinqiao2014-creator/virtual-companion-agent' },
       { icon: 'phone', title: '手机 H5/PWA（生产主力）', desc: 'IndexedDB 本地存储 + server-relay Agent 编排 + license-backend 授权网关。生产环境 systemd 部署，支持云备份与主动消息。', tag: '私有', repo: '' },
       { icon: 'smartphone', title: 'Android Flutter 客户端', desc: '完全独立运行的 Flutter 原生 App。用户自配 API Key 直连模型，本地 CRAG 记忆 + 加密备份 + 指纹锁。无服务器依赖。', tag: '私有', repo: '' },
       { icon: 'server', title: '授权网关后端', desc: 'Node.js · 账号注册/登录 · 授权码管理 · 额度计量 · 模型中转(chat/image/TTS/voice) · 管理后台 · 审计日志。API Key 服务端隔离，前端不暴露。', tag: '私有', repo: '' },
@@ -129,7 +129,7 @@ const t = {
     contactDesc: '对产品或技术实现感兴趣？欢迎交流：',
     email: 'qinqiao2014@gmail.com',
     repoLinks: [
-      { title: '开源客户端仓库', url: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { title: '开源客户端仓库', url: 'https://github.com/qinqiao2014-creator/virtual-companion-agent' },
     ],
   },
   en: {
@@ -192,7 +192,7 @@ const t = {
     clientsTitle: 'Multi-platform Clients',
     clientsDesc: 'One product, four forms covering different user scenarios. Each runs independently yet shares Agent orchestration and character protocols.',
     clients: [
-      { icon: 'desktop', title: 'Desktop Client (Open Source)', desc: 'Browser frontend + Electron shell + local Node API + SQLite. Self-hosted or remote model proxy. AGPL-3.0-only.', tag: 'Open Source', repo: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { icon: 'desktop', title: 'Desktop Client (Open Source)', desc: 'Browser frontend + Electron shell + local Node API + SQLite. Self-hosted or remote model proxy. AGPL-3.0-only.', tag: 'Open Source', repo: 'https://github.com/qinqiao2014-creator/virtual-companion-agent' },
       { icon: 'phone', title: 'Mobile H5/PWA (Production)', desc: 'IndexedDB local storage + server-relay Agent orchestration + license-backend auth gateway. systemd deployment, cloud backup, proactive messaging.', tag: 'Private', repo: '' },
       { icon: 'smartphone', title: 'Android Flutter Client', desc: 'Fully standalone Flutter native app. User configures own API Key, direct model connection. Local CRAG memory + encrypted backup + biometric lock. No server dependency.', tag: 'Private', repo: '' },
       { icon: 'server', title: 'License Gateway Backend', desc: 'Node.js · Account registration/login · License code management · Quota metering · Model relay (chat/image/TTS/voice) · Admin dashboard · Audit logs. API Key isolated on server side.', tag: 'Private', repo: '' },
@@ -257,7 +257,7 @@ const t = {
     contactDesc: 'Interested in the product or technical implementation? Feel free to reach out:',
     email: 'qinqiao2014@gmail.com',
     repoLinks: [
-      { title: 'Open Source Client', url: 'https://github.com/Zaosusu/virtual-companion-agent' },
+      { title: 'Open Source Client', url: 'https://github.com/qinqiao2014-creator/virtual-companion-agent' },
     ],
   },
 };
