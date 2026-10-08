@@ -203,9 +203,9 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: '开源贡献', desc: '留在公开仓库的提交，可点开核对' },
     ],
     gardenItems: [
-      'AgentBehaviorBench 智能体接入',
       'AI 眼镜 · 会展导览',
       '公共健康筛查系统',
+      'AgentBehaviorBench 智能体接入',
     ],
   },
   en: {
@@ -342,9 +342,9 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'Open Source', desc: 'Commits left in public repositories — clickable' },
     ],
     gardenItems: [
-      'AgentBehaviorBench Agent Onboarding',
       'AI Glasses · Exhibition Guide',
       'Public Health Screening System',
+      'AgentBehaviorBench Agent Onboarding',
     ],
   },
 };

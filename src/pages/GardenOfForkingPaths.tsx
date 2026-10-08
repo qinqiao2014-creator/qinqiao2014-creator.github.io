@@ -14,7 +14,8 @@ import { ArrowLeft, ExternalLink, Github, GitPullRequest, Lock } from 'lucide-re
 //              不写客户名 / logo / 内部架构 / 业务数据（需客户书面授权才可具名）
 //   · oss     开源贡献 —— 公开可验真：附仓库 / PR 链接，任何人都能去核对
 //
-// 新增项目：往 works 数组里加一条即可，卡片会自动渲染。
+// 新增项目：往 works 数组里加一条即可，卡片会自动渲染；
+//          页面上按「商业委托 → 开源贡献」自动归位排序，无需手动插队。
 // 口径红线（ABB）：4 个 PR 全部「已提交、等待评审」，0 个已合并 ——
 //              不可写成「已贡献代码」或「已合并」。
 // ============================================================================
@@ -145,6 +146,11 @@ const works: WorkItem[] = [
   },
 ];
 
+// 展示顺序：商业委托在前、开源贡献在后 —— 与主页第 V 节的分类介绍同序。
+// 往 works 追加新项目时不必关心插入位置，这里会自动归位（同类内保持声明顺序）。
+const kindRank: Record<WorkKind, number> = { client: 0, oss: 1 };
+const orderedWorks = [...works].sort((a, b) => kindRank[a.kind] - kindRank[b.kind]);
+
 const t = {
   zh: {
     back: '返回首页',
@@ -236,7 +242,7 @@ export function GardenOfForkingPaths() {
       {/* Works — 一条条直接列，卡片自带披露级别 */}
       <section className="bg-bg-primary pb-16 px-5">
         <div className="max-w-content mx-auto space-y-10">
-          {works.map((w) => {
+          {orderedWorks.map((w) => {
             const isClient = w.kind === 'client';
             const accent = isClient ? '#f4a261' : '#6cbcb2';
             return (
