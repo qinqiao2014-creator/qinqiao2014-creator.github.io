@@ -11,6 +11,9 @@ import { NPCAgentProject } from './pages/NPCAgentProject';
 import { TwoLinkProject } from './pages/TwoLinkProject';
 import { DistanceProject } from './pages/DistanceProject';
 import { LibraryOfBabel } from './pages/LibraryOfBabel';
+import { GardenOfForkingPaths } from './pages/GardenOfForkingPaths';
+import { InvisibleCities } from './pages/InvisibleCities';
+import { Contributions } from './pages/Contributions';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
@@ -63,6 +66,9 @@ function App() {
             <Route path="/projects/2link" element={<TwoLinkProject />} />
             <Route path="/projects/distance" element={<DistanceProject />} />
             <Route path="/library-of-babel" element={<LibraryOfBabel />} />
+            <Route path="/garden-of-forking-paths" element={<GardenOfForkingPaths />} />
+            <Route path="/invisible-cities" element={<InvisibleCities />} />
+            <Route path="/contributions" element={<Contributions />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
