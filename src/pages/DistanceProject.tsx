@@ -139,13 +139,14 @@ const t = {
       },
     ],
 
-    vrTitle: 'XR · 同一套场景的另一种出口',
+    vrTitle: 'XR · 为 PICO 头显单独构建的版本',
     vrDesc:
-      'distance 的 3D 场景不是为某一种屏幕写死的：主站与 XR 共用同一份产品实现和同一个 FastAPI 后端，换的是呈现层而不是业务逻辑。桌面浏览器直接打开主站，头显走独立的 XR 应用。',
+      'distance 的 3D 场景不是为某一种屏幕写死的：主站与头显版共用同一份产品实现和同一个 FastAPI 后端，换的是呈现层而不是业务逻辑。桌面浏览器直接打开主站；PICO 头显上有一个单独构建的 XR 版本，用 PICO OS 6 原生支持的 WebXR 接管整个空间、独立渲染——既能做全沉浸 VR，也能做与现实空间结合的 AR。',
     vrFeatures: [
       '主站 www.distance3d.xyz：桌面 / 移动浏览器直接打开',
-      'XR 出口 xr.distance3d.xyz：独立 XR 应用，含便捷登录与注册',
-      '早期 PICO WebSpatial 副本已废弃，不再是运行入口',
+      'PICO 头显版 xr.distance3d.xyz：为头显单独构建，含便捷登录与注册',
+      '基于 PICO OS 6 原生支持的 WebXR：支持沉浸 VR 与透视 AR，手柄、手势、全身追踪等多种交互',
+      '已完成官方 PICO OS 6 环境下的平面与 XR 双形态验收',
       '同一套场景 + 同一个后端，不为每个出口各写一份',
     ],
 
@@ -316,13 +317,14 @@ const t = {
       },
     ],
 
-    vrTitle: 'XR · Another Outlet for the Same Scene',
+    vrTitle: 'XR · A Version Built Specifically for PICO Headsets',
     vrDesc:
-      'The 3D scene is not hard-wired to one screen: the main site and XR share one product implementation and one FastAPI backend. What changes between them is the presentation layer, not the business logic. Desktop browsers open the main site; headsets use a separate XR app.',
+      'The 3D scene is not hard-wired to one screen: the main site and the headset version share one product implementation and one FastAPI backend. What changes is the presentation layer, not the business logic. Desktop browsers open the main site; on PICO headsets there is a separately built XR version that uses WebXR — natively supported by PICO OS 6 — to take over the whole space and render on its own: full immersive VR as well as AR blended with the real room.',
     vrFeatures: [
       'Main site www.distance3d.xyz — opens directly in desktop or mobile browsers',
-      'XR outlet xr.distance3d.xyz — a standalone XR app with quick login and signup',
-      'The early PICO WebSpatial copy is deprecated and no longer a runtime entry',
+      'PICO headset version xr.distance3d.xyz — built for headsets, with quick login and signup',
+      'Built on WebXR, natively supported by PICO OS 6 — immersive VR and passthrough AR, with controllers, hands and full-body tracking',
+      'Validated in both flat and XR forms on the official PICO OS 6 environment',
       'One scene graph and one backend — no per-outlet duplicate implementations',
     ],
 
@@ -647,7 +649,7 @@ export function DistanceProject() {
           </div>
         </div>
 
-        {/* PICO VR */}
+        {/* XR / PICO headset version */}
         <div className="max-w-content mx-auto px-5 mb-16">
           <div className="p-6 rounded border border-[#0f8b8d]/20 bg-[#0f8b8d]/5">
             <h2 className="font-noto font-bold text-xl text-text-primary mb-4 flex items-center gap-2">
