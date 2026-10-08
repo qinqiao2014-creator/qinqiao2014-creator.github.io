@@ -12,13 +12,19 @@ import {
   Sparkles,
   Cpu,
   Play,
+  Film,
   ExternalLink,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
 
+// 两支宣传片，面向不同场合，都保留：
+//   · 原版产品介绍片（AdventureX 比赛 Demo 完整演示）
+//   · Tripothon S1 定制版（为 Tripo AI 全球首届世界构建黑客松专门剪的版本，
+//     赛事主题 A Gift for ____）
 const BILIBILI_VIDEO = 'https://www.bilibili.com/video/BV14f3q6mE8R/';
+const TRIPOTHON_VIDEO = 'https://www.bilibili.com/video/BV15JHp65EQh/';
 const SITE_URL = 'https://www.distance3d.xyz/';
 const XR_URL = 'https://xr.distance3d.xyz/';
 
@@ -40,6 +46,25 @@ const t = {
     whatTitle: '这是什么',
     whatDesc:
       'distance 想回答一个问题：你和好友的关系，能不能「看见」？每个人都是一颗由自己经历长出来的星球——不是填出来的，是算出来的：资料、共同记忆、双向行为被 AI 编译成个人图谱，关系强弱直接换算成轨道距离。星球也不只是远远看着：它有地表、有家园，走进去，地面上的每样东西都从某段记忆里长出来——一次旅行长成一块纪念石，一段夜聊长成一盏灯，点一下就跳回那段记忆。',
+
+    trailerTitle: '宣传片',
+    trailerDesc: '两支片子面向不同场合，都保留：一支讲完整流程，一支为 Tripothon S1 专门剪。',
+    trailers: [
+      {
+        label: '产品介绍片',
+        badge: '原版',
+        note: '完整演示比赛 Demo 的主流程：注册、星球诞生、三层尺度漫游到彗星访问。',
+        cta: '去 B 站观看',
+        url: BILIBILI_VIDEO,
+      },
+      {
+        label: 'Tripothon S1 定制版',
+        badge: '比赛定制',
+        note: '为 Tripothon S1 —— Tripo AI 主办的全球首届世界构建黑客松（主题 A Gift for ____）专门剪的版本。',
+        cta: '去 B 站观看',
+        url: TRIPOTHON_VIDEO,
+      },
+    ],
 
     demoTitle: '主流程',
     demoDesc: '从注册到走进别人家门的完整链路',
@@ -148,6 +173,25 @@ const t = {
     whatTitle: 'What Is This',
     whatDesc:
       'distance asks: can you "see" your relationships? Everyone gets a planet grown out of their own life — not filled in by hand, but computed: profile data, shared memories and two-way behavior are compiled by AI into a personal graph, and relationship strength converts directly into orbital distance. A planet is not something you only gaze at from afar either — it has a surface and a home. Walk onto it and every object on the ground grew out of a specific memory: a trip becomes a memorial stone, a late-night conversation becomes a lamp, and tapping it takes you back to that memory.',
+
+    trailerTitle: 'Trailers',
+    trailerDesc: 'Two cuts for two occasions — one walks the full flow, the other was cut specifically for Tripothon S1.',
+    trailers: [
+      {
+        label: 'Product Intro',
+        badge: 'Original',
+        note: 'The full competition demo flow: signup, planet genesis, three-scale roaming and comet travel.',
+        cta: 'Watch on Bilibili',
+        url: BILIBILI_VIDEO,
+      },
+      {
+        label: 'Tripothon S1 Cut',
+        badge: 'Made for a contest',
+        note: 'Cut specifically for Tripothon S1 — the first global world-building hackathon by Tripo AI (theme: A Gift for ____).',
+        cta: 'Watch on Bilibili',
+        url: TRIPOTHON_VIDEO,
+      },
+    ],
 
     demoTitle: 'Main Flow',
     demoDesc: 'The full path from signup to walking into someone else\'s home',
@@ -309,15 +353,6 @@ export function DistanceProject() {
               <Glasses className="w-4 h-4" />
               <span className="font-noto text-sm">{c.ctaXr}</span>
             </a>
-            <a
-              href={BILIBILI_VIDEO}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded border border-border-custom text-text-secondary hover:border-[#6cbcb2] hover:text-text-primary transition-colors duration-200"
-            >
-              <Play className="w-4 h-4" />
-              <span className="font-noto text-sm">{c.cta}</span>
-            </a>
           </div>
         </div>
 
@@ -341,6 +376,39 @@ export function DistanceProject() {
           <p className="font-noto text-sm text-text-secondary leading-relaxed max-w-2xl">
             {c.whatDesc}
           </p>
+        </div>
+
+        {/* Trailers —— 两支宣传片都保留 */}
+        <div className="max-w-content mx-auto px-5 mb-16">
+          <h2 className="font-noto font-bold text-xl text-text-primary mb-4 flex items-center gap-2">
+            <Film className="w-5 h-5 text-[#6cbcb2]" />
+            {c.trailerTitle}
+          </h2>
+          <p className="font-noto text-sm text-text-muted mb-6">{c.trailerDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {c.trailers.map((v, i) => (
+              <a
+                key={i}
+                href={v.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block p-5 rounded border border-border-custom bg-bg-secondary hover:border-[#6cbcb2]/60 transition-colors duration-200"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-block px-2 py-0.5 rounded text-xs font-noto bg-[#0f8b8d]/12 text-[#0f8b8d] border border-[#0f8b8d]/25">
+                    {v.badge}
+                  </span>
+                  <h3 className="font-noto font-semibold text-base text-text-primary">{v.label}</h3>
+                </div>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">{v.note}</p>
+                <span className="inline-flex items-center gap-2 font-noto text-sm text-[#9bd8cf] group-hover:text-[#6cbcb2] transition-colors duration-200">
+                  <Play className="w-3.5 h-3.5" />
+                  {v.cta}
+                  <ExternalLink className="w-3 h-3" />
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Demo Walkthrough */}
