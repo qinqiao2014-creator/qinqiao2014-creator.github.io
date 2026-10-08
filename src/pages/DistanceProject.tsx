@@ -12,12 +12,15 @@ import {
   Sparkles,
   Cpu,
   Play,
+  ExternalLink,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { Footer } from '../sections/Footer';
 
 const BILIBILI_VIDEO = 'https://www.bilibili.com/video/BV14f3q6mE8R/';
+const SITE_URL = 'https://www.distance3d.xyz/';
+const XR_URL = 'https://xr.distance3d.xyz/';
 
 const t = {
   zh: {
@@ -25,46 +28,56 @@ const t = {
     title: 'distance',
     subtitle: '光年尺度下，人与人之间关系的距离',
     tag: 'AdventureX 2026 · PICO 赛道第二名',
-    desc: 'distance 是一款社交关系可视化产品。你的每段经历、每个朋友、每段关系都会被编译成一颗「个人星球」，悬浮在三维宇宙中。关系越近，星球靠得越近；关系越淡，光年越远。',
-    status: '团队作品 · AdventureX 2026 PICO 赛道 优胜 Web 应用创作者',
-    cta: '产品介绍',
+    desc: 'distance 是一个 AI-native 的动态关系宇宙：你的出生、地点、教育、工作、项目、技能、记忆，以及你和他人的双向行为，会被编译成个人图谱，持续影响星球质量、关系强度、空间距离与 3D 宇宙布局——关系变淡，那颗星球就真的变暗、漂远。',
+    status: '团队作品 · 主站 distance3d.xyz · XR 出口 xr.distance3d.xyz',
+    cta: '产品介绍视频',
+    ctaSite: '访问主站',
+    ctaXr: '打开 XR',
 
     awardTitle: '比赛成绩',
     award: 'AdventureX 2026 — PICO 赛道 第二名 · 优胜 Web 应用创作者',
 
     whatTitle: '这是什么',
     whatDesc:
-      'distance 想回答一个问题：你和好友的关系，能不能「看见」？在这里，每个人都是一颗独一无二的星球。你的学历、经历、记忆、技能构成了星球的质量；你和谁常联系、关系好不好，决定了星球之间的距离。打开宇宙，你能直观看到自己的「关系地图」。',
+      'distance 想回答一个问题：你和好友的关系，能不能「看见」？每个人都是一颗由自己经历长出来的星球——不是填出来的，是算出来的：资料、共同记忆、双向行为被 AI 编译成个人图谱，关系强弱直接换算成轨道距离。星球也不只是远远看着：它有地表、有家园，走进去，地面上的每样东西都从某段记忆里长出来——一次旅行长成一块纪念石，一段夜聊长成一盏灯，点一下就跳回那段记忆。',
 
-    demoTitle: 'Demo 演示',
-    demoDesc: '5 分钟体验完整流程',
+    demoTitle: '主流程',
+    demoDesc: '从注册到走进别人家门的完整链路',
     demoSteps: [
       {
-        title: '注册并创建星球',
-        desc: '填写个人资料，选择星球原型，输入描述词让 AI 优化参数。播放 Genesis 动画，你的星球在宇宙中诞生。',
+        title: '注册与身份引导',
+        desc: '性格与星球原型选择后播放 Genesis 创世动画，你的星球在宇宙中诞生；会话可恢复，XR 端另有便捷登录与注册。',
       },
       {
-        title: '建立关系连接',
-        desc: '从已注册用户中选择朋友，设定关系类型和描述。系统会计算关系强度，并在星系中为你们分配距离。',
+        title: '资料与记忆录入',
+        desc: '结构化填写经历，也可上传照片、聊天截图和视频作为记忆来源；AI 分析后的记忆卡片你可以逐条编辑确认。',
+      },
+      {
+        title: '建立关系与 Activity',
+        desc: '好友发现与关系编辑；发布文字、图片、音频、视频，这些行为会作为生态信号与双向证据参与计算。',
       },
       {
         title: '三层尺度漫游',
-        desc: 'Planet 视角看自己的星球细节；Galaxy 视角看好友星系分布；Nebula 视角看更宏观的圈层网络。',
+        desc: 'Planet 视角看自己的星球与家园；Galaxy 视角看好友星系分布；Nebula 视角看更宏观的圈层网络。',
       },
       {
         title: '彗星跃迁旅行',
-        desc: '选中好友星球，乘坐彗星前往。穿越星云的电影级过渡动画，抵达后可以查看对方星球并返回。',
+        desc: '选中好友星球，乘彗星穿越星云抵达，落进对方家园里看见别人留下的痕迹与留言，再返回自己的星球。',
+      },
+      {
+        title: '家园建造与整件布置',
+        desc: '在自己的地表放置整件建筑，可查看建筑详情与出处、管理协作者授权；宇宙里的星球消费同一份已放建筑与演化数据。',
       },
     ],
 
-    vrTitle: 'PICO VR 空间计算',
+    vrTitle: 'XR · 同一套场景的另一种出口',
     vrDesc:
-      '戴上 PICO VR 头盔，进入 2.4m × 1.8m × 2.4m 的虚拟空间。你可以用手直接抓取星球、捏合缩放距离、旋转观察关系轨道。社交不再是一块屏幕，而是环绕在你身边的真实宇宙。',
+      'distance 的 3D 场景不是为某一种屏幕写死的：主站与 XR 共用同一份产品实现和同一个 FastAPI 后端，换的是呈现层而不是业务逻辑。桌面浏览器直接打开主站，头显走独立的 XR 应用。',
     vrFeatures: [
-      '自然手势交互：点击、拖拽、捏合缩放、旋转',
-      '重力对齐的世界坐标系，无需额外校准',
-      '普通浏览器自动降级为 R3F 桌面体验',
-      '同一套代码同时支持 Web 和 VR',
+      '主站 www.distance3d.xyz：桌面 / 移动浏览器直接打开',
+      'XR 出口 xr.distance3d.xyz：独立 XR 应用，含便捷登录与注册',
+      '早期 PICO WebSpatial 副本已废弃，不再是运行入口',
+      '同一套场景 + 同一个后端，不为每个出口各写一份',
     ],
 
     coreTitle: '核心体验',
@@ -75,32 +88,38 @@ const t = {
       },
       {
         title: 'AI 记忆闭环',
-        desc: '你记录的记忆会被 AI 分析，影响星球质量和关系距离。记得越多，星球越「重」，关系网络越真实。',
+        desc: '记忆分析由内嵌在后端里的 Memory Agent 完成：它加载你的记忆上下文、产出结构化结论，再触发质量、关系与距离的重算——前端不并行跑 Agent。',
       },
       {
-        title: '电影级旅行',
-        desc: '从自己的星球出发，乘彗星穿越星云，降落在朋友星球上。三段尺度切换 + 跃迁动画，像科幻电影一样漫游。',
+        title: '地表家园与建造',
+        desc: '五类生态——海洋、火山、翠绿、晶体、类地，各有专用原生 GLB，叠加程序化地貌、水体、熔岩与植被；可放置整件建筑并追溯出处。',
       },
       {
-        title: 'PICO VR 沉浸',
-        desc: '支持 PICO OS 6 头显。在真实物理空间里用手抓取、拉近、旋转星球，体验空间计算带来的沉浸感。',
+        title: '三层尺度 + 彗星旅行',
+        desc: 'Planet / Galaxy / Nebula 三段尺度切换，配合彗星跃迁的过渡动画，像科幻电影一样在关系网络里漫游。',
+      },
+      {
+        title: '每小时演化',
+        desc: '关系不是快照而是连续量：后台 worker 整点重算一遍宇宙，关系淡了星球就变暗、漂远。',
       },
     ],
 
     techTitle: '技术架构',
     tech: [
-      { icon: 'server', title: 'FastAPI 后端', desc: 'FastAPI · Pydantic v2 · SQLAlchemy 2 · Alembic · 六边形架构' },
-      { icon: 'database', title: '数据层', desc: 'PostgreSQL 事实源 · Neo4j 图投影 · OpenViking 派生记忆' },
-      { icon: 'brain', title: 'AI 层', desc: '嵌入式记忆代理 · 语义召回 · 生态系统生成 · 对话 Agent' },
-      { icon: 'glasses', title: '空间计算', desc: 'WebSpatial SDK · PICO OS 6 · 体积场景 · 自然手势交互' },
+      { icon: 'server', title: 'FastAPI 后端', desc: 'FastAPI · Pydantic v2 · SQLAlchemy 2 · Alembic · 分层架构；Memory Agent 直接内嵌，Node Demo 仅作历史参考' },
+      { icon: 'database', title: '数据层', desc: 'PostgreSQL 事实源 → 事务性 outbox → Neo4j 图投影 · 版本化空间快照' },
+      { icon: 'brain', title: 'AI 与算法', desc: '记忆分析 · 语义证据 · 亲和度；mass.v2 / relationship.v4 / layout.v2 均带版本号，可独立演进与回放' },
+      { icon: 'glasses', title: '前端与呈现', desc: 'Vite · React 19 · TypeScript · React Three Fiber · Drei · Postprocessing · Zustand · 中英 i18n' },
+      { icon: 'cpu', title: '运行时与部署', desc: 'Nginx + FastAPI + PostgreSQL + Neo4j 的 Compose 栈；每小时演化 worker 与 outbox worker 各自独立进程' },
     ],
 
     mechanismTitle: '核心机制',
     mechanisms: [
-      { name: '星球质量', desc: '综合个人档案、教育背景、工作经历、技能、记忆等维度计算。记忆会随时间衰减，持续更新才能保持质量。' },
-      { name: '关系距离', desc: '根据互动频率、最近一次联系、共同经历、持续时间、双向互动和语义理解等信号，动态计算两人之间距离。' },
-      { name: '空间布局', desc: '力导向算法模拟真实物理：关系好的星球靠得近，关系疏远的被推远。180 次迭代确保布局稳定不重叠。' },
-      { name: '每小时演化', desc: '后台 Worker 每小时自动运行：衰减旧事件 → 重算星球质量 → 更新关系距离 → 重新布局空间位置。' },
+      { name: '星球质量 · mass.v2', desc: '综合个人档案、教育、工作经历、项目、技能与记忆计算。记忆会随时间衰减，持续更新才能保持质量。' },
+      { name: '关系距离 · relationship.v4', desc: '由互动频率、最近联系、共同经历、持续时间、双向行为与语义证据共同决定，动态计算两人之间的距离。' },
+      { name: '空间布局 · layout.v2', desc: '力导向算法模拟真实物理：关系好的星球靠得近，疏远的被推远；布局结果落成版本化空间快照供前端消费。' },
+      { name: '每小时演化', desc: '后台 worker 整点运行：衰减旧事件 → 重算星球质量 → 更新关系距离 → 重新布局并生成新快照。' },
+      { name: '图投影 outbox', desc: 'PostgreSQL 写入后经事务性 outbox 异步投影到 Neo4j，失败可重试，保证事实源与图查询最终一致。' },
     ],
 
     teamTitle: '团队',
@@ -117,46 +136,56 @@ const t = {
     title: 'distance',
     subtitle: 'The Distance Between People, at the Scale of Light-Years',
     tag: 'AdventureX 2026 · PICO Track 2nd Place',
-    desc: 'distance is a social relationship visualization product. Every experience, friend, and relationship is compiled into a "personal planet" floating in a 3D universe. Closer relationships pull planets together; distant ones drift light-years apart.',
-    status: 'Team Project · AdventureX 2026 PICO Track — Outstanding Web App Creator',
-    cta: 'Product Intro',
+    desc: 'distance is an AI-native dynamic relationship universe. Your birth, location, education, work, projects, skills, memories — and the two-way behavior between you and others — are compiled into a personal graph that continuously drives planet mass, relationship strength, spatial distance and the 3D universe layout. When a relationship fades, that planet really does dim and drift away.',
+    status: 'Team Project · Site distance3d.xyz · XR at xr.distance3d.xyz',
+    cta: 'Product Video',
+    ctaSite: 'Visit Site',
+    ctaXr: 'Open XR',
 
     awardTitle: 'Competition Result',
     award: 'AdventureX 2026 — PICO Track 2nd Place · Outstanding Web App Creator',
 
     whatTitle: 'What Is This',
     whatDesc:
-      'distance asks: can you "see" your relationships? Here, everyone is a unique planet. Your education, experiences, memories, and skills form the planet\'s mass. Who you stay in touch with and how close you are determines the distance between planets. Open the universe and you can visually explore your relationship map.',
+      'distance asks: can you "see" your relationships? Everyone gets a planet grown out of their own life — not filled in by hand, but computed: profile data, shared memories and two-way behavior are compiled by AI into a personal graph, and relationship strength converts directly into orbital distance. A planet is not something you only gaze at from afar either — it has a surface and a home. Walk onto it and every object on the ground grew out of a specific memory: a trip becomes a memorial stone, a late-night conversation becomes a lamp, and tapping it takes you back to that memory.',
 
-    demoTitle: 'Demo Walkthrough',
-    demoDesc: 'A 5-minute full experience',
+    demoTitle: 'Main Flow',
+    demoDesc: 'The full path from signup to walking into someone else\'s home',
     demoSteps: [
       {
-        title: 'Register & Create Your Planet',
-        desc: 'Fill in your profile, choose a planet prototype, and enter a description for AI parameter optimization. Watch the Genesis animation as your planet is born in the universe.',
+        title: 'Signup & Onboarding',
+        desc: 'Pick a personality and planet prototype, then watch the Genesis animation as your planet is born. Sessions are resumable, and XR offers quick login and signup.',
       },
       {
-        title: 'Build Relationship Connections',
-        desc: 'Select friends from registered users, set relationship types and descriptions. The system calculates relationship strength and assigns distance in the galaxy.',
+        title: 'Profile & Memory Intake',
+        desc: 'Enter structured history, or upload photos, chat screenshots and videos as memory sources. AI-extracted memory cards stay editable until you confirm each one.',
+      },
+      {
+        title: 'Relationships & Activity',
+        desc: 'Friend discovery and relationship editing; post text, images, audio or video. This behavior feeds back as ecosystem signals and mutual evidence.',
       },
       {
         title: 'Navigate Three Scales',
-        desc: 'Planet view for your own details; Galaxy view for friend distribution; Nebula view for the broader network of circles.',
+        desc: 'Planet view for your own planet and home surface; Galaxy view for the distribution of friends; Nebula view for the wider network of circles.',
       },
       {
         title: 'Comet Travel',
-        desc: 'Select a friend\'s planet and ride a comet through the nebula. Cinematic transition takes you there; return home anytime.',
+        desc: 'Select a friend\'s planet and ride a comet through the nebula to land inside their home, where you can see the traces and messages others left, then travel back.',
+      },
+      {
+        title: 'Home Building & Placement',
+        desc: 'Place structures on your own terrain, inspect each building\'s details and provenance, and manage collaborator permissions. Planets in the universe consume the same placed-structure and evolution data.',
       },
     ],
 
-    vrTitle: 'PICO VR Spatial Computing',
+    vrTitle: 'XR · Another Outlet for the Same Scene',
     vrDesc:
-      'Put on a PICO VR headset and enter a 2.4m × 1.8m × 2.4m volumetric space. Grab planets with your hands, pinch to scale distances, and rotate to observe relationship orbits. Social interaction is no longer on a screen — it is a real universe surrounding you.',
+      'The 3D scene is not hard-wired to one screen: the main site and XR share one product implementation and one FastAPI backend. What changes between them is the presentation layer, not the business logic. Desktop browsers open the main site; headsets use a separate XR app.',
     vrFeatures: [
-      'Natural hand gestures: tap, drag, pinch-to-scale, rotate',
-      'Gravity-aligned world coordinates, no calibration needed',
-      'Graceful fallback to R3F on desktop browsers',
-      'Single codebase supports both Web and VR',
+      'Main site www.distance3d.xyz — opens directly in desktop or mobile browsers',
+      'XR outlet xr.distance3d.xyz — a standalone XR app with quick login and signup',
+      'The early PICO WebSpatial copy is deprecated and no longer a runtime entry',
+      'One scene graph and one backend — no per-outlet duplicate implementations',
     ],
 
     coreTitle: 'Core Experience',
@@ -167,32 +196,38 @@ const t = {
       },
       {
         title: 'AI Memory Loop',
-        desc: 'Recorded memories are analyzed by AI to affect planet mass and relationship distance. The more you record, the "heavier" your planet becomes.',
+        desc: 'Memory analysis runs in an agent embedded in the backend: it loads your memory context, produces structured conclusions, then triggers recomputation of mass, relationships and distance — the front end never runs an agent in parallel.',
       },
       {
-        title: 'Cinematic Travel',
-        desc: 'Depart from your planet, ride a comet through nebulae, and land on a friend\'s planet. Three-scale navigation with cinematic transitions feels like a sci-fi movie.',
+        title: 'Home Surface & Building',
+        desc: 'Five biomes — ocean, volcano, verdant, crystal and terrestrial — each with dedicated native GLB assets plus procedural terrain, water, lava and vegetation. Structures can be placed and traced back to their provenance.',
       },
       {
-        title: 'PICO VR Immersion',
-        desc: 'Supports PICO OS 6 headsets. Grab, pull, and rotate planets in real physical space. Experience the immersion of spatial computing.',
+        title: 'Three Scales + Comet Travel',
+        desc: 'Planet / Galaxy / Nebula scale switching with a cinematic comet transition, so roaming the relationship network feels like a sci-fi film.',
+      },
+      {
+        title: 'Hourly Evolution',
+        desc: 'A relationship is not a snapshot but a continuous quantity: a background worker recomputes the universe on the hour, so faded ties dim and drift.',
       },
     ],
 
     techTitle: 'Tech Architecture',
     tech: [
-      { icon: 'server', title: 'FastAPI Backend', desc: 'FastAPI · Pydantic v2 · SQLAlchemy 2 · Alembic · Hexagonal Architecture' },
-      { icon: 'database', title: 'Data Layer', desc: 'PostgreSQL source of truth · Neo4j graph projection · OpenViking derived memory' },
-      { icon: 'brain', title: 'AI Layer', desc: 'Embedded memory agent · semantic recall · ecosystem generation · conversation agent' },
-      { icon: 'glasses', title: 'Spatial Computing', desc: 'WebSpatial SDK · PICO OS 6 · volumetric scene · natural gesture interaction' },
+      { icon: 'server', title: 'FastAPI Backend', desc: 'FastAPI · Pydantic v2 · SQLAlchemy 2 · Alembic · layered architecture; the memory agent is embedded directly — the Node demo is history only' },
+      { icon: 'database', title: 'Data Layer', desc: 'PostgreSQL source of truth → transactional outbox → Neo4j graph projection · versioned spatial snapshots' },
+      { icon: 'brain', title: 'AI & Algorithms', desc: 'Memory analysis · semantic evidence · affinity; mass.v2 / relationship.v4 / layout.v2 are all versioned so each can evolve and be replayed independently' },
+      { icon: 'glasses', title: 'Frontend & Rendering', desc: 'Vite · React 19 · TypeScript · React Three Fiber · Drei · Postprocessing · Zustand · Chinese/English i18n' },
+      { icon: 'cpu', title: 'Runtime & Deployment', desc: 'Compose stack of Nginx + FastAPI + PostgreSQL + Neo4j, with the hourly evolution worker and outbox worker as separate processes' },
     ],
 
     mechanismTitle: 'Core Mechanisms',
     mechanisms: [
-      { name: 'Planet Mass', desc: 'Calculated from profile, education, experience, skills, and memories. Memories decay over time; continuous updates maintain mass.' },
-      { name: 'Relationship Distance', desc: 'Dynamically computed from interaction frequency, recency, shared experiences, duration, reciprocity, and semantic signals.' },
-      { name: 'Spatial Layout', desc: 'Force-directed physics simulation: close relationships pull planets together, distant ones push apart. 180 iterations for stable, collision-free layout.' },
-      { name: 'Hourly Evolution', desc: 'Background worker runs every hour: decay old events → recalculate planet mass → update relationship distances → recompute spatial layout.' },
+      { name: 'Planet Mass · mass.v2', desc: 'Computed from profile, education, work history, projects, skills and memories. Memories decay over time, so mass has to be maintained.' },
+      { name: 'Relationship Distance · relationship.v4', desc: 'Driven by interaction frequency, recency, shared experiences, duration, two-way behavior and semantic evidence.' },
+      { name: 'Spatial Layout · layout.v2', desc: 'Force-directed physics: close relationships pull planets together, distant ones push apart. Results are persisted as versioned spatial snapshots for the front end.' },
+      { name: 'Hourly Evolution', desc: 'A background worker runs on the hour: decay old events → recompute planet mass → update relationship distances → re-layout and emit a new snapshot.' },
+      { name: 'Graph Projection Outbox', desc: 'Writes to PostgreSQL are asynchronously projected into Neo4j through a transactional outbox with retry, keeping the source of truth and graph queries eventually consistent.' },
     ],
 
     teamTitle: 'Team',
@@ -255,15 +290,35 @@ export function DistanceProject() {
             {c.desc}
           </p>
           <p className="font-noto text-xs text-text-muted/60 mb-4">{c.status}</p>
-          <a
-            href={BILIBILI_VIDEO}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded border border-[#0f8b8d]/60 bg-[#0f8b8d]/12 text-text-primary hover:bg-[#0f8b8d]/18 hover:border-[#0f8b8d] transition-colors duration-200 mb-16"
-          >
-            <Play className="w-4 h-4" />
-            <span className="font-noto text-sm">{c.cta}</span>
-          </a>
+          <div className="flex flex-wrap items-center gap-3 mb-16">
+            <a
+              href={SITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded border border-[#0f8b8d]/60 bg-[#0f8b8d]/12 text-text-primary hover:bg-[#0f8b8d]/18 hover:border-[#0f8b8d] transition-colors duration-200"
+            >
+              <ExternalLink className="w-4 h-4" />
+              <span className="font-noto text-sm">{c.ctaSite}</span>
+            </a>
+            <a
+              href={XR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded border border-border-custom text-text-secondary hover:border-[#6cbcb2] hover:text-text-primary transition-colors duration-200"
+            >
+              <Glasses className="w-4 h-4" />
+              <span className="font-noto text-sm">{c.ctaXr}</span>
+            </a>
+            <a
+              href={BILIBILI_VIDEO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded border border-border-custom text-text-secondary hover:border-[#6cbcb2] hover:text-text-primary transition-colors duration-200"
+            >
+              <Play className="w-4 h-4" />
+              <span className="font-noto text-sm">{c.cta}</span>
+            </a>
+          </div>
         </div>
 
         {/* Award */}
