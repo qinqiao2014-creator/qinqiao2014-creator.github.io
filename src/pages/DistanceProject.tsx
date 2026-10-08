@@ -204,7 +204,7 @@ const t = {
     teamGroupB: 'Tripothon S1',
     teamGroupBNote: 'Tripo AI 世界构建黑客松 · 主题 A Gift for ____',
     teamB: [
-      { name: '阿早', role: '技术开发', color: '#ffe0bd' },
+      { name: '阿早', role: '总负责人', color: '#ffe0bd' },
       { name: '史登会', role: '队员', color: '#8fb8e8' },
       { name: '梁潇', role: '队员', color: '#c9a6e8' },
     ],
@@ -381,7 +381,7 @@ const t = {
     teamGroupB: 'Tripothon S1',
     teamGroupBNote: "Tripo AI world-building hackathon · theme: A Gift for ____",
     teamB: [
-      { name: 'Zaosusu', role: 'Engineering', color: '#ffe0bd' },
+      { name: 'Zaosusu', role: 'Team Lead', color: '#ffe0bd' },
       { name: 'Shi Denghui', role: 'Team member', color: '#8fb8e8' },
       { name: 'Liang Xiao', role: 'Team member', color: '#c9a6e8' },
     ],
