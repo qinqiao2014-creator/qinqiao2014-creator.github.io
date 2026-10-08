@@ -159,15 +159,28 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-bg-primary/95 backdrop-blur-xl border-t border-border-custom px-5 py-4 space-y-3">
-          <Link
-            to="/library-of-babel"
-            className={`block font-noto text-sm ${
-              location.pathname === '/library-of-babel' ? 'text-text-primary' : 'text-text-muted'
+          {/* 我的项目 —— 与桌面导航同序同口径：我的项目 ▾ / 合作项目 / Skill */}
+          <div
+            className={`font-noto text-xs tracking-wider ${
+              isProjectPage ? 'text-text-primary' : 'text-text-muted/70'
             }`}
-            onClick={() => setMobileOpen(false)}
           >
-            {c.library}
-          </Link>
+            {c.projects}
+          </div>
+          <div className="pl-3 space-y-2.5 border-l border-border-custom/60">
+            {projectLinks.map((p) => (
+              <Link
+                key={p.path}
+                to={p.path}
+                className={`block font-noto text-sm ${
+                  location.pathname === p.path ? 'text-text-primary' : 'text-text-muted'
+                }`}
+                onClick={() => setMobileOpen(false)}
+              >
+                {c[p.key]}
+              </Link>
+            ))}
+          </div>
           <Link
             to="/garden-of-forking-paths"
             className={`block font-noto text-sm ${
@@ -177,18 +190,15 @@ export function Navbar() {
           >
             {c.garden}
           </Link>
-          {projectLinks.map((p) => (
-            <Link
-              key={p.path}
-              to={p.path}
-              className={`block font-noto text-sm ${
-                location.pathname === p.path ? 'text-text-primary' : 'text-text-muted'
-              }`}
-              onClick={() => setMobileOpen(false)}
-            >
-              {c[p.key]}
-            </Link>
-          ))}
+          <Link
+            to="/library-of-babel"
+            className={`block font-noto text-sm ${
+              location.pathname === '/library-of-babel' ? 'text-text-primary' : 'text-text-muted'
+            }`}
+            onClick={() => setMobileOpen(false)}
+          >
+            {c.library}
+          </Link>
         </div>
       )}
     </nav>
