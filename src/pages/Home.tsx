@@ -196,7 +196,7 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'agent-usage-skill', tag: '用量监控', desc: '本地多 AI Agent Token 用量统一监控看板，插件化接入、实时刷新。', stars: 0, url: 'https://github.com/qinqiao2014-creator/agent-usage-skill' },
       { name: 'form-autofill-skill', tag: '填表助手', desc: '一次录档表单自动填，提交永远由你本人点。', stars: 0, url: 'https://github.com/qinqiao2014-creator/form-autofill-skill' },
     ],
-    gardenTitle: '小径分岔的花园',
+    gardenTitle: '合作项目',
     gardenDesc: '在别人的迷宫里落子——有些世界由他人构筑，我在其中添过砖。',
     gardenKinds: [
       { name: '商业委托', desc: '为甲方构筑的系统，匿名脱敏呈现' },
@@ -335,7 +335,7 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'agent-usage-skill', tag: 'Usage Monitor', desc: 'Unified local dashboard for multi-Agent Token usage, plugin-based and real-time.', stars: 0, url: 'https://github.com/qinqiao2014-creator/agent-usage-skill' },
       { name: 'form-autofill-skill', tag: 'Form Helper', desc: 'Record once, forms auto-fill — submit always by you.', stars: 0, url: 'https://github.com/qinqiao2014-creator/form-autofill-skill' },
     ],
-    gardenTitle: 'The Garden of Forking Paths',
+    gardenTitle: 'Collaborations',
     gardenDesc: "Moves made inside others' mazes — worlds built by others, where I laid a few bricks.",
     gardenKinds: [
       { name: 'Commissioned', desc: 'Systems built for clients, shown anonymized' },
@@ -813,7 +813,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* 小径分岔的花园 · 商业委托与开源贡献 */}
+      {/* 合作项目 · 商业委托与开源贡献 */}
       <section data-animate className="bg-[#101720]/70 py-16 md:py-24 px-5">
         <div className="max-w-content mx-auto">
           <SectionHeading numeral="V" className="mb-2">{c.gardenTitle}</SectionHeading>

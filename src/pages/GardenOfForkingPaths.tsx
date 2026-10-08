@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ExternalLink, Github, GitPullRequest, Lock } from 'lucide-react';
 
 // ============================================================================
-// 小径分岔的花园 —— 「别人的项目」总集
+// 合作项目 —— 为他人做的项目总集（商业委托 + 开源贡献）
 //
 // 两类都直接列在这一页，不再拆二级栏目：
 //   · client  商业委托 —— 匿名脱敏：只写行业 + 做了什么 + 技术栈 + 成果，
@@ -155,8 +155,8 @@ const orderedWorks = [...works].sort((a, b) => kindRank[a.kind] - kindRank[b.kin
 const t = {
   zh: {
     back: '返回首页',
-    heroTitle: '小径分岔的花园',
-    heroSubtitle: 'The Garden of Forking Paths · 博尔赫斯',
+    heroTitle: '合作项目',
+    heroSubtitle: '匿名委托 · 公开贡献',
     subtitle: '在别人的迷宫里落子',
     heroDesc:
       '这里放的都不是我自己的作品——是我在别人的世界里落下的子。一类是为甲方构筑、归甲方所有、对外不挂我名的系统；一类是在公开仓库里留下的、任何人都能核对的提交。两类都直接列在下面。',
@@ -171,8 +171,8 @@ const t = {
   },
   en: {
     back: 'Back to Home',
-    heroTitle: 'The Garden of Forking Paths',
-    heroSubtitle: 'The Garden of Forking Paths · Borges',
+    heroTitle: 'Collaborations',
+    heroSubtitle: 'Anonymous commissions · public contributions',
     subtitle: "Moves made inside others' mazes",
     heroDesc:
       "Nothing here is my own work — these are the moves I made inside others' worlds. Some are systems built for clients: owned by them, bearing their name, unattributed to me in public. Others are commits left in public repositories that anyone can check. Both are listed directly below.",
