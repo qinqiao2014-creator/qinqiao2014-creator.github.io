@@ -98,17 +98,17 @@ const works: WorkItem[] = [
     introEn:
       'An on-glasses guide built for a very large trade fair: wearing the glasses, visitors ask for directions, find booths, look up exhibitors and get live interpretation — in Chinese or English, entirely by voice, without pulling out a phone. The system is split front-to-back: the glasses run a single APK, while a separate backend acts as the device control plane — configuration and available tools for every pair on site are managed there and pushed down to the device right away, with no re-issued install package.',
     points: [
-      '眼镜端一体化：语音唤醒即用，问路、找展位、查展商、同声传译都用开口完成，全程不掏手机、不盯屏幕。',
-      '室内导航：在超大场馆里逐级带路（当前馆 → 目标展位），以语音播报方位关系，不要求用户看小屏地图；不清楚自己位置时可用拍照辅助确认。',
-      '室外导航：接入实景定位与路线规划，从到达路径一路导到展馆入口，同样以语音给出。',
+      '眼镜端一体化：语音唤醒即用，问路、找展位、查展商、同声传译都用开口完成，全程不掏手机、不必低头看手机。',
+      '室内导航：在超大场馆里逐级带路（当前馆 → 目标展位），眼镜屏上给出文字与方位提示，同时用语音播报——看屏、听声都能走；不清楚自己位置时可用拍照辅助确认。',
+      '室外导航：接入实景定位与路线规划，从到达路径一路导到展馆入口，同样以屏幕文字与语音同步提示。',
       '展商检索：拍下展位或招牌即可查出参展商并直接问答；识别不清或未收录时如实提示，不编造信息。',
       '设备控制面：每副眼镜的配置、版本与可用工具由后台统一管理并即时下发，现场无需逐台设置。',
       '交互按 AR 低遮挡原则设计，提示不遮挡真实视野。',
     ],
     pointsEn: [
-      'Integrated on the glasses: usable right after a voice wake-up — directions, booth finding, exhibitor lookup and live interpretation are all done by speaking, with no phone and no screen.',
-      'Indoor navigation: guides the visitor step by step through a very large venue (current hall → target booth), announcing spatial relations by voice instead of asking the user to read a small map; a photo can help confirm position when it is unclear.',
-      'Outdoor navigation: real positioning and routing, guiding from the arrival route all the way to the venue entrance, also by voice.',
+      'Integrated on the glasses: usable right after a voice wake-up — directions, booth finding, exhibitor lookup and live interpretation are all done by speaking, with no phone in hand and no need to look down at one.',
+      'Indoor navigation: guides the visitor step by step through a very large venue (current hall → target booth), showing text and directional cues on the glasses display while announcing the same guidance by voice — follow it by looking or by listening; a photo can help confirm position when it is unclear.',
+      'Outdoor navigation: real positioning and routing, guiding from the arrival route all the way to the venue entrance, with on-screen text and voice prompts in step.',
       'Exhibitor lookup: photograph a booth or signboard to identify the exhibitor and ask questions directly; unclear or unlisted results are reported honestly, never fabricated.',
       'Device control plane: each pair’s configuration, version and available tools are managed centrally and pushed to the device immediately — no per-unit setup on site.',
       'Interaction follows low-occlusion AR principles, so prompts never block the real view.',
