@@ -9,8 +9,6 @@ const navt = {
     projects: '项目',
     library: 'Skill',
     garden: '小径分岔的花园',
-    invisible: '看不见的城市',
-    contributions: '开源贡献',
     ogcp: 'OGCP',
     walking: '走路修仙',
     academy: '无限学园',
@@ -24,8 +22,6 @@ const navt = {
     projects: 'Projects',
     library: 'Skill',
     garden: 'The Garden of Forking Paths',
-    invisible: 'Invisible Cities',
-    contributions: 'Open Source',
     ogcp: 'OGCP',
     walking: 'WalkingXiuxian',
     academy: 'Infinite Academy',
@@ -46,19 +42,12 @@ const projectLinks = [
   { path: '/projects/distance', key: 'distance' as const },
 ];
 
-const gardenLinks = [
-  { path: '/invisible-cities', key: 'invisible' as const },
-  { path: '/contributions', key: 'contributions' as const },
-];
-
 export function Navbar() {
   const { lang, toggle } = useLang();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [gardenOpen, setGardenOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const gardenRef = useRef<HTMLDivElement>(null);
   const c = navt[lang];
 
   useEffect(() => {
@@ -66,19 +55,13 @@ export function Navbar() {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setDropdownOpen(false);
       }
-      if (gardenRef.current && !gardenRef.current.contains(e.target as Node)) {
-        setGardenOpen(false);
-      }
     }
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
   const isProjectPage = projectLinks.some((p) => p.path === location.pathname);
-  const isGardenPage =
-    location.pathname === '/garden-of-forking-paths' ||
-    location.pathname === '/invisible-cities' ||
-    location.pathname === '/contributions';
+  const isGardenPage = location.pathname === '/garden-of-forking-paths';
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-bg-primary/72 backdrop-blur-xl border-b border-border-custom/80">
@@ -127,49 +110,15 @@ export function Navbar() {
             )}
           </div>
 
-          {/* The Garden of Forking Paths — collab entry */}
-          <div className="relative" ref={gardenRef}>
-            <div
-              className={`flex items-center gap-1 font-noto text-sm transition-colors duration-200 ${
-                isGardenPage ? 'text-text-primary' : 'text-text-muted'
-              }`}
-            >
-              <Link
-                to="/garden-of-forking-paths"
-                className="hover:text-[#9bd8cf] transition-colors duration-200"
-                onClick={() => setGardenOpen(false)}
-              >
-                {c.garden}
-              </Link>
-              <button
-                onClick={() => setGardenOpen(!gardenOpen)}
-                aria-label="expand"
-                className="hover:text-[#9bd8cf] transition-colors duration-200"
-              >
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${gardenOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-            </div>
-            {gardenOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 rounded border border-border-custom bg-bg-secondary shadow-lg py-1">
-                {gardenLinks.map((p) => (
-                  <Link
-                    key={p.path}
-                    to={p.path}
-                    className={`block px-4 py-2 text-sm transition-colors ${
-                      location.pathname === p.path
-                        ? 'text-text-primary bg-[#6cbcb2]/10'
-                        : 'text-text-muted hover:text-[#9bd8cf] hover:bg-bg-primary/50'
-                    }`}
-                    onClick={() => setGardenOpen(false)}
-                  >
-                    {c[p.key]}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* The Garden of Forking Paths */}
+          <Link
+            to="/garden-of-forking-paths"
+            className={`font-noto text-sm transition-colors duration-200 ${
+              isGardenPage ? 'text-text-primary' : 'text-text-muted hover:text-[#9bd8cf]'
+            }`}
+          >
+            {c.garden}
+          </Link>
 
           {/* Library of Babel */}
           <Link
@@ -228,18 +177,6 @@ export function Navbar() {
           >
             {c.garden}
           </Link>
-          {gardenLinks.map((p) => (
-            <Link
-              key={p.path}
-              to={p.path}
-              className={`block font-noto text-sm pl-3 ${
-                location.pathname === p.path ? 'text-text-primary' : 'text-text-muted'
-              }`}
-              onClick={() => setMobileOpen(false)}
-            >
-              {c[p.key]}
-            </Link>
-          ))}
           {projectLinks.map((p) => (
             <Link
               key={p.path}

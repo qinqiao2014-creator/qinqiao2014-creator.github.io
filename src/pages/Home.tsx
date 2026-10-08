@@ -62,7 +62,7 @@ type Translation = {
   skills: { name: string; tag: string; desc: string; stars: number; url: string }[];
   gardenTitle: string;
   gardenDesc: string;
-  gardenCards: { title: string; tag: string; desc: string; path: string }[];
+  gardenItems: string[];
 };
 
 const t: Record<'zh' | 'en', Translation> = {
@@ -197,9 +197,10 @@ const t: Record<'zh' | 'en', Translation> = {
     ],
     gardenTitle: '小径分岔的花园',
     gardenDesc: '在别人的迷宫里落子——有些世界由他人构筑，我在其中添过砖。',
-    gardenCards: [
-      { title: '看不见的城市', tag: '商业委托', desc: '为甲方构筑、以甲方之名存在的系统。受合同约束，仅以匿名方式呈现。', path: '/invisible-cities' },
-      { title: '开源贡献', tag: '协作共建', desc: '在他人的公开仓库里落子——PR 可点、提交可验真。', path: '/contributions' },
+    gardenItems: [
+      'AgentBehaviorBench 智能体接入',
+      'AI 眼镜 · 会展导览',
+      '公共健康筛查系统',
     ],
   },
   en: {
@@ -331,9 +332,10 @@ const t: Record<'zh' | 'en', Translation> = {
     ],
     gardenTitle: 'The Garden of Forking Paths',
     gardenDesc: "Moves made inside others' mazes — worlds built by others, where I laid a few bricks.",
-    gardenCards: [
-      { title: 'Invisible Cities', tag: 'Commissioned', desc: 'Systems built for clients, existing under their names. Bound by contract; shown anonymously only.', path: '/invisible-cities' },
-      { title: 'Open Source', tag: 'Collaboration', desc: "Moves in others' public repositories — PRs clickable, commits verifiable.", path: '/contributions' },
+    gardenItems: [
+      'AgentBehaviorBench Agent Onboarding',
+      'AI Glasses · Exhibition Guide',
+      'Public Health Screening System',
     ],
   },
 };
@@ -807,29 +809,40 @@ export function Home() {
         <div className="max-w-content mx-auto">
           <SectionHeading numeral="V" className="mb-2">{c.gardenTitle}</SectionHeading>
           <p className="font-noto text-sm text-text-secondary mb-8">{c.gardenDesc}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-stagger>
-            {c.gardenCards.map((card) => (
-              <Link
-                key={card.path}
-                to={card.path}
-                className="group block min-h-[200px] p-6 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
-              >
-                <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#6cbcb2]/10 text-[#6cbcb2] border border-[#6cbcb2]/30">
-                  {card.tag}
+          <Link
+            to="/garden-of-forking-paths"
+            className="group block border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2] transition-colors duration-200"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-8 p-6 md:p-8">
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded text-xs font-noto mb-4 bg-[#6cbcb2]/10 text-[#6cbcb2] border border-[#6cbcb2]/30">
+                  {lang === 'zh' ? '商业委托 · 开源贡献' : 'Commissioned · Open Source'}
                 </span>
-                <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
-                  {card.title}
+                <h3 className="font-noto font-bold text-lg md:text-xl text-text-primary mb-3 group-hover:text-[#9bd8cf] transition-colors">
+                  {lang === 'zh' ? '在别人的迷宫里落子' : "Moves made inside others' mazes"}
                 </h3>
-                <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
-                  {card.desc}
+                <p className="font-noto text-sm text-text-secondary leading-relaxed mb-5">
+                  {lang === 'zh'
+                    ? '为甲方构筑的系统（匿名脱敏），以及在公开仓库里留下的提交（可点开核对）。'
+                    : 'Systems built for clients (anonymized), plus commits left in public repositories — clickable and verifiable.'}
                 </p>
-                <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
-                  <span className="font-noto">{lang === 'zh' ? '查看详情' : 'View Details'}</span>
+                <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-[#9bd8cf] transition-colors">
+                  <span className="font-noto">{lang === 'zh' ? '查看全部' : 'View All'}</span>
                   <ArrowRight className="w-3 h-3" />
                 </span>
-              </Link>
-            ))}
-          </div>
+              </div>
+              <div className="flex flex-col justify-center gap-3 lg:border-l lg:border-border-custom lg:pl-8">
+                {c.gardenItems.map((item, i) => (
+                  <div key={i} className="flex items-baseline gap-3">
+                    <span className="font-inter text-xs text-text-muted tabular-nums shrink-0">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="font-noto text-sm text-text-primary">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
