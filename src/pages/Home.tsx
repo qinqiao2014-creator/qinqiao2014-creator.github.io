@@ -60,6 +60,9 @@ type Translation = {
   skillsTitle: string;
   skillsDesc: string;
   skills: { name: string; tag: string; desc: string; stars: number; url: string }[];
+  gardenTitle: string;
+  gardenDesc: string;
+  gardenCards: { title: string; tag: string; desc: string; path: string }[];
 };
 
 const t: Record<'zh' | 'en', Translation> = {
@@ -192,6 +195,12 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'agent-usage-skill', tag: '用量监控', desc: '本地多 AI Agent Token 用量统一监控看板，插件化接入、实时刷新。', stars: 0, url: 'https://github.com/Zaosusu/agent-usage-skill' },
       { name: 'form-autofill-skill', tag: '填表助手', desc: '一次录档表单自动填，提交永远由你本人点。', stars: 0, url: 'https://github.com/Zaosusu/form-autofill-skill' },
     ],
+    gardenTitle: '小径分岔的花园',
+    gardenDesc: '在别人的迷宫里落子——有些世界由他人构筑，我在其中添过砖。',
+    gardenCards: [
+      { title: '看不见的城市', tag: '商业委托', desc: '为甲方构筑、以甲方之名存在的系统。受合同约束，仅以匿名方式呈现。', path: '/invisible-cities' },
+      { title: '开源贡献', tag: '协作共建', desc: '在他人的公开仓库里落子——PR 可点、提交可验真。', path: '/contributions' },
+    ],
   },
   en: {
     heroTitle: 'Zaosusu',
@@ -319,6 +328,12 @@ const t: Record<'zh' | 'en', Translation> = {
       { name: 'multi-agent-async-workflow', tag: 'Workflow', desc: 'Multi-agent async collaboration using GitHub Issues as a task bus.', stars: 7, url: 'https://github.com/Zaosusu/multi-agent-async-workflow' },
       { name: 'agent-usage-skill', tag: 'Usage Monitor', desc: 'Unified local dashboard for multi-Agent Token usage, plugin-based and real-time.', stars: 0, url: 'https://github.com/Zaosusu/agent-usage-skill' },
       { name: 'form-autofill-skill', tag: 'Form Helper', desc: 'Record once, forms auto-fill — submit always by you.', stars: 0, url: 'https://github.com/Zaosusu/form-autofill-skill' },
+    ],
+    gardenTitle: 'The Garden of Forking Paths',
+    gardenDesc: "Moves made inside others' mazes — worlds built by others, where I laid a few bricks.",
+    gardenCards: [
+      { title: 'Invisible Cities', tag: 'Commissioned', desc: 'Systems built for clients, existing under their names. Bound by contract; shown anonymously only.', path: '/invisible-cities' },
+      { title: 'Open Source', tag: 'Collaboration', desc: "Moves in others' public repositories — PRs clickable, commits verifiable.", path: '/contributions' },
     ],
   },
 };
@@ -787,10 +802,41 @@ export function Home() {
         </div>
       </section>
 
+      {/* 小径分岔的花园 · 商业委托与开源贡献 */}
+      <section data-animate className="bg-[#101720]/70 py-16 md:py-24 px-5">
+        <div className="max-w-content mx-auto">
+          <SectionHeading numeral="V" className="mb-2">{c.gardenTitle}</SectionHeading>
+          <p className="font-noto text-sm text-text-secondary mb-8">{c.gardenDesc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-stagger>
+            {c.gardenCards.map((card) => (
+              <Link
+                key={card.path}
+                to={card.path}
+                className="group block min-h-[200px] p-6 border border-border-custom rounded bg-bg-secondary hover:border-[#6cbcb2] hover:-translate-y-1 transition-all duration-200"
+              >
+                <span className="inline-block px-2 py-0.5 rounded text-xs font-noto mb-2 bg-[#6cbcb2]/10 text-[#6cbcb2] border border-[#6cbcb2]/30">
+                  {card.tag}
+                </span>
+                <h3 className="font-noto font-bold text-lg text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                  {card.title}
+                </h3>
+                <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+                  {card.desc}
+                </p>
+                <span className="inline-flex items-center gap-1 text-sm text-text-muted group-hover:text-text-secondary transition-colors">
+                  <span className="font-noto">{lang === 'zh' ? '查看详情' : 'View Details'}</span>
+                  <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section data-animate className="bg-[#080B10]/70 pt-10 md:pt-14 pb-16 md:pb-24 px-5">
         <div className="max-w-content mx-auto text-center">
-          <SectionHeading numeral="V" className="mb-6 justify-center">{c.contactTitle}</SectionHeading>
+          <SectionHeading numeral="VI" className="mb-6 justify-center">{c.contactTitle}</SectionHeading>
           <p className="font-noto text-base text-text-secondary mb-8">{c.contactDesc}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a href={`mailto:${c.email}`} className="inline-flex items-center gap-2 text-text-primary hover:text-text-secondary transition-colors duration-200 group">

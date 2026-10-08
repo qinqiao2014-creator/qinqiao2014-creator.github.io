@@ -8,7 +8,6 @@ const navt = {
     home: '阿早',
     projects: '项目',
     library: 'Skill',
-    collab: '他作',
     garden: '小径分岔的花园',
     invisible: '看不见的城市',
     contributions: '开源贡献',
@@ -24,7 +23,6 @@ const navt = {
     home: 'Zaosusu',
     projects: 'Projects',
     library: 'Skill',
-    collab: 'Collab',
     garden: 'The Garden of Forking Paths',
     invisible: 'Invisible Cities',
     contributions: 'Open Source',
@@ -48,8 +46,7 @@ const projectLinks = [
   { path: '/projects/distance', key: 'distance' as const },
 ];
 
-const collabLinks = [
-  { path: '/garden-of-forking-paths', key: 'garden' as const },
+const gardenLinks = [
   { path: '/invisible-cities', key: 'invisible' as const },
   { path: '/contributions', key: 'contributions' as const },
 ];
@@ -59,9 +56,9 @@ export function Navbar() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [collabOpen, setCollabOpen] = useState(false);
+  const [gardenOpen, setGardenOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const collabRef = useRef<HTMLDivElement>(null);
+  const gardenRef = useRef<HTMLDivElement>(null);
   const c = navt[lang];
 
   useEffect(() => {
@@ -69,8 +66,8 @@ export function Navbar() {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setDropdownOpen(false);
       }
-      if (collabRef.current && !collabRef.current.contains(e.target as Node)) {
-        setCollabOpen(false);
+      if (gardenRef.current && !gardenRef.current.contains(e.target as Node)) {
+        setGardenOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClick);
@@ -78,7 +75,7 @@ export function Navbar() {
   }, []);
 
   const isProjectPage = projectLinks.some((p) => p.path === location.pathname);
-  const isCollabPage =
+  const isGardenPage =
     location.pathname === '/garden-of-forking-paths' ||
     location.pathname === '/invisible-cities' ||
     location.pathname === '/contributions';
@@ -130,22 +127,33 @@ export function Navbar() {
             )}
           </div>
 
-          {/* Collab Dropdown */}
-          <div className="relative" ref={collabRef}>
-            <button
-              onClick={() => setCollabOpen(!collabOpen)}
+          {/* The Garden of Forking Paths — collab entry */}
+          <div className="relative" ref={gardenRef}>
+            <div
               className={`flex items-center gap-1 font-noto text-sm transition-colors duration-200 ${
-                isCollabPage ? 'text-text-primary' : 'text-text-muted hover:text-[#9bd8cf]'
+                isGardenPage ? 'text-text-primary' : 'text-text-muted'
               }`}
             >
-              {c.collab}
-              <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${collabOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {collabOpen && (
+              <Link
+                to="/garden-of-forking-paths"
+                className="hover:text-[#9bd8cf] transition-colors duration-200"
+                onClick={() => setGardenOpen(false)}
+              >
+                {c.garden}
+              </Link>
+              <button
+                onClick={() => setGardenOpen(!gardenOpen)}
+                aria-label="expand"
+                className="hover:text-[#9bd8cf] transition-colors duration-200"
+              >
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${gardenOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+            </div>
+            {gardenOpen && (
               <div className="absolute top-full left-0 mt-2 w-56 rounded border border-border-custom bg-bg-secondary shadow-lg py-1">
-                {collabLinks.map((p) => (
+                {gardenLinks.map((p) => (
                   <Link
                     key={p.path}
                     to={p.path}
@@ -154,7 +162,7 @@ export function Navbar() {
                         ? 'text-text-primary bg-[#6cbcb2]/10'
                         : 'text-text-muted hover:text-[#9bd8cf] hover:bg-bg-primary/50'
                     }`}
-                    onClick={() => setCollabOpen(false)}
+                    onClick={() => setGardenOpen(false)}
                   >
                     {c[p.key]}
                   </Link>
@@ -214,26 +222,24 @@ export function Navbar() {
           <Link
             to="/garden-of-forking-paths"
             className={`block font-noto text-sm ${
-              isCollabPage ? 'text-text-primary' : 'text-text-muted'
+              isGardenPage ? 'text-text-primary' : 'text-text-muted'
             }`}
             onClick={() => setMobileOpen(false)}
           >
-            {c.collab}
+            {c.garden}
           </Link>
-          {collabLinks
-            .filter((p) => p.path !== '/garden-of-forking-paths')
-            .map((p) => (
-              <Link
-                key={p.path}
-                to={p.path}
-                className={`block font-noto text-sm pl-3 ${
-                  location.pathname === p.path ? 'text-text-primary' : 'text-text-muted'
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {c[p.key]}
-              </Link>
-            ))}
+          {gardenLinks.map((p) => (
+            <Link
+              key={p.path}
+              to={p.path}
+              className={`block font-noto text-sm pl-3 ${
+                location.pathname === p.path ? 'text-text-primary' : 'text-text-muted'
+              }`}
+              onClick={() => setMobileOpen(false)}
+            >
+              {c[p.key]}
+            </Link>
+          ))}
           {projectLinks.map((p) => (
             <Link
               key={p.path}
