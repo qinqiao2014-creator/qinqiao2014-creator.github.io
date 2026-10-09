@@ -154,7 +154,7 @@ const t = {
     jupiterDesc:
       'distance 不止跑在屏幕里：我们把它做进了一台真实的裸眼 3D 相框。无需眼镜，光栅面板用 10 个原生视点把 distance 的星球、家园与故事直接「浮」在桌面上——你绕着走，画面就跟着变。',
     jupiterFeatures: [
-      '自研上框 App（com.distance.spaceframe）：把 distance 打包成可直接装进相框安卓系统的应用，实物上电即看',
+      '自研上框 App：把 distance 打包成可直接装进相框安卓系统的应用，实物上电即看',
       '六张 1200×1920 成品画面 + 十视点交错图集：星球、家园、全景各就各位，光栅面板原生分辨率铺满',
       '三首内置音乐（抵达 / 家园 / 宇宙）：画面与声音一同在相框里循环',
       '「故事模式」10 幕：把 distance 的双线叙事《苏醒》做成逐帧 3D 分镜——两个灵魂在不同星球醒来，手里攥着同一枚星图残片，循着同一颗带环行星重逢',
@@ -344,7 +344,7 @@ const t = {
     jupiterDesc:
       'distance does not only live on a screen: we built it into a real glasses-free 3D photo frame. No glasses needed — a lenticular panel with 10 native viewpoints floats distance\'s planets, homes and story right on your desk, and the picture shifts as you move around it.',
     jupiterFeatures: [
-      'A custom frame app (com.distance.spaceframe): distance packaged into an app that installs straight onto the frame\'s Android system, running the moment it powers on',
+      'A custom frame app for the frame: distance packaged into an app that installs straight onto the frame\'s Android system, running the moment it powers on',
       'Six 1200×1920 final images plus a ten-viewpoint interlaced atlas: planets, homes and panoramas laid out at the panel\'s native resolution',
       'Three built-in tracks (Arrival / Homestead / Universe): picture and sound loop together inside the frame',
       '"Story mode" — 10 chapters: the distance two-thread narrative "Awakening" as frame-by-frame 3D storyboards — two souls wake on different planets, each clutching the same shard of a star chart, reuniting across a shared ringed planet',
