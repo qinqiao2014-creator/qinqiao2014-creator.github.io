@@ -199,8 +199,8 @@ const t: Record<'zh' | 'en', Translation> = {
     gardenTitle: '合作项目',
     gardenDesc: '在别人的迷宫里落子——有些世界由他人构筑，我在其中添过砖。',
     gardenKinds: [
-      { name: '商业委托', desc: '为甲方构筑的系统，匿名脱敏呈现' },
-      { name: '开源贡献', desc: '留在公开仓库的提交，可点开核对' },
+      { name: '商业委托', desc: '为甲方构筑的系统' },
+      { name: '开源贡献', desc: '留在公开仓库的提交' },
     ],
     gardenItems: [
       'AI 眼镜（ROKID）· 广交会导览助手',
@@ -338,8 +338,8 @@ const t: Record<'zh' | 'en', Translation> = {
     gardenTitle: 'Collaborations',
     gardenDesc: "Moves made inside others' mazes — worlds built by others, where I laid a few bricks.",
     gardenKinds: [
-      { name: 'Commissioned', desc: 'Systems built for clients, shown anonymized' },
-      { name: 'Open Source', desc: 'Commits left in public repositories — clickable' },
+      { name: 'Commissioned', desc: 'Systems built for clients' },
+      { name: 'Open Source', desc: 'Commits left in public repositories' },
     ],
     gardenItems: [
       'AI Glasses (ROKID) · Canton Fair Guide',

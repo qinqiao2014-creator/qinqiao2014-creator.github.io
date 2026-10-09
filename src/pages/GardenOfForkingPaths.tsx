@@ -167,13 +167,13 @@ const t = {
   zh: {
     back: '返回首页',
     heroTitle: '合作项目',
-    heroSubtitle: '匿名委托 · 公开贡献',
+    heroSubtitle: '商业委托 · 开源贡献',
     subtitle: '在别人的迷宫里落子',
     heroDesc:
-      '这里放的都不是我自己的作品——是我在别人的世界里落下的子。一类是为甲方构筑、归甲方所有、对外不挂我名的系统；一类是在公开仓库里留下的、任何人都能核对的提交。两类都直接列在下面。',
+      '这里放的都不是我自己的作品——是我在别人的世界里落下的子。一类是为甲方构筑、归甲方所有的系统；一类是在公开仓库里留下的提交。两类都直接列在下面。',
     heroQuote: '"时间永远分岔，通向无数的将来。" —— 博尔赫斯',
-    kindClient: '商业委托 · 匿名',
-    kindOss: '开源贡献 · 可验真',
+    kindClient: '商业委托',
+    kindOss: '开源贡献',
     whatIDid: '做了什么',
     techStack: '技术栈',
     statusLabel: '当前状态',
@@ -183,13 +183,13 @@ const t = {
   en: {
     back: 'Back to Home',
     heroTitle: 'Collaborations',
-    heroSubtitle: 'Anonymous commissions · public contributions',
+    heroSubtitle: 'Client commissions · open-source contributions',
     subtitle: "Moves made inside others' mazes",
     heroDesc:
-      "Nothing here is my own work — these are the moves I made inside others' worlds. Some are systems built for clients: owned by them, bearing their name, unattributed to me in public. Others are commits left in public repositories that anyone can check. Both are listed directly below.",
+      "Nothing here is my own work — these are the moves I made inside others' worlds. Some are systems built for clients, owned by them. Others are commits left in public repositories. Both are listed directly below.",
     heroQuote: '"Time forks perpetually toward innumerable futures." — Borges',
-    kindClient: 'Commissioned · Anonymous',
-    kindOss: 'Open Source · Verifiable',
+    kindClient: 'Commissioned',
+    kindOss: 'Open Source',
     whatIDid: 'What I Did',
     techStack: 'Tech Stack',
     statusLabel: 'Status',
@@ -396,8 +396,8 @@ export function GardenOfForkingPaths() {
         <div className="max-w-content mx-auto border-t border-border-custom pt-8">
           <p className="font-noto text-xs text-text-muted leading-relaxed max-w-3xl">
             {lang === 'zh'
-              ? '商业委托条目均经匿名脱敏，不含客户实名、内部架构与业务数据——需取得客户书面授权后才会具名。开源贡献条目则相反：所有链接均可公开点击核对。'
-              : 'Commissioned entries are anonymized — no client names, internal architecture or business data, and naming requires written client authorization. Open-source entries are the opposite: every link is publicly clickable and verifiable.'}
+              ? '商业委托条目不含客户实名、内部架构与业务数据；开源贡献条目附公开仓库与 PR 链接。'
+              : 'Commissioned entries omit client names, internal architecture and business data; open-source entries link to the public repositories and pull requests.'}
           </p>
         </div>
       </section>
