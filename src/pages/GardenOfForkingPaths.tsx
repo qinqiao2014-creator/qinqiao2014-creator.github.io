@@ -16,9 +16,8 @@ import { ArrowLeft, Award, ExternalLink, Github, GitPullRequest, Lock } from 'lu
 //
 // 新增项目：往 works 数组里加一条即可，卡片会自动渲染；
 //          页面上按「商业委托 → 开源贡献」自动归位排序，无需手动插队。
-// 口径红线（ABB，2026-10-08 复核）：#336（cra-agent 接入）已合并进 main；
-//              #335 / #337（Agent 接入）、#338（工具链修复）仍在评审中 ——
-//              只有 #336 可写「已合并」，其余只能写「已提交、等待评审」。
+// 口径红线（ABB，2026-10-09 复核，来源 gh 实查）：#335 / #336 / #337（Agent 接入）已合并进 main；
+//              #338（工具链修复）仍在评审中 —— 三个 Agent 接入可写「已合并」，#338 写「已提交、等待评审」。
 // ============================================================================
 
 type WorkKind = 'client' | 'oss';
@@ -62,9 +61,9 @@ const works: WorkItem[] = [
     badge: '入选 NVIDIA Inception 加速器',
     badgeEn: 'NVIDIA Inception Program Member',
     intro:
-      'AgentBehaviorBench（ABB）是我与博士导师合作的开源项目：一个检测 AI Agent 行为异常的评测基准。它把来自不同开源项目的 Agent 装进统一沙箱运行，观察它们的真实行为——怎么调用工具、推理轨迹长什么样、缺资源时如何退化。平台只接受「一条消息进、一条答复出」的形态，而上游 Agent 常常是网页界面、后台守护进程或长驻命令行，因此每个 Agent 都需要写一套接入单元，把它真正的入口接到平台上。我为这个基准接入三个开源 Agent，并修复了平台工具链上的真实缺陷。项目已入选 NVIDIA Inception 加速器，目前正在招募种子用户。',
+      'AgentBehaviorBench（ABB）是我与博士导师合作的开源项目：一个检测 AI Agent 行为异常的评测基准。它把来自不同开源项目的 Agent 装进统一沙箱运行，观察它们的真实行为——怎么调用工具、推理轨迹长什么样、缺资源时如何退化。平台只接受「一条消息进、一条答复出」的形态，而上游 Agent 常常是网页界面、后台守护进程或长驻命令行，因此每个 Agent 都需要写一套接入单元，把它真正的入口接到平台上。我为这个基准接入三个开源 Agent，并修复了平台工具链上的真实缺陷。目前正在招募种子用户。',
     introEn:
-      'AgentBehaviorBench (ABB) is an open-source project I collaborate on with my doctoral advisor: a benchmark for detecting behavioral anomalies in AI agents. It runs agents from different open-source projects inside a uniform sandbox and observes what they actually do — which tools they call, what their reasoning traces look like, and how they degrade when resources are missing. The platform only accepts a one-message-in / one-answer-out shape, while upstream agents are often web UIs, background daemons or long-running CLIs — so each agent needs an onboarding unit that wires its real entrypoint to the platform. I onboarded three open-source agents into this benchmark and fixed real defects in its toolchain. The project has been accepted into the NVIDIA Inception program and is currently onboarding seed users.',
+      'AgentBehaviorBench (ABB) is an open-source project I collaborate on with my doctoral advisor: a benchmark for detecting behavioral anomalies in AI agents. It runs agents from different open-source projects inside a uniform sandbox and observes what they actually do — which tools they call, what their reasoning traces look like, and how they degrade when resources are missing. The platform only accepts a one-message-in / one-answer-out shape, while upstream agents are often web UIs, background daemons or long-running CLIs — so each agent needs an onboarding unit that wires its real entrypoint to the platform. I onboarded three open-source agents into this benchmark and fixed real defects in its toolchain. It is currently onboarding seed users.',
     points: [
       '扫地机器人客服 Agent —— 上游只发布了网页界面，真正的推理图封装在类里；我把平台的调用接到它真正的图入口。接入过程中撞出并修掉一个上游缺陷：三个中间件只实现了同步钩子，用异步驱动会直接抛错——这个 bug 本地冒烟抓不到，只在完整评测流程里才暴露。这是唯一走完三阶段全流程的任务，并归档了脱敏 trace（695 个文件）。',
       '代码合规审查 Agent —— 它本身是常驻守护进程，没有「处理一次请求」的入口，我把它包装成「一次评测 = 一个待审提交」。此外把安全扫描器的离线供给做到字段级保真：规则快照路径原本会污染规则 ID 前缀，与线上不一致，我把它移到文件系统根目录，使 check_id 与线上 registry 逐字段一致。',
@@ -79,9 +78,9 @@ const works: WorkItem[] = [
     ],
     tech: ['LangGraph', 'Docker', 'Python', 'Agent Evaluation', 'OpenTelemetry', 'Semgrep'],
     status:
-      '4 个 Pull Request 已提交（3 个 Agent 接入 + 1 个工具链修复）：其中 #336（cra-agent 接入）已合并进 main，其余 #335、#337（接入）+ #338（工具链修复）仍在等待维护者评审与合并。另对 10 个开放任务逐一验证输入契约后做了可行性判定，均给出代码级结论。',
+      '4 个 Pull Request 已提交（3 个 Agent 接入 + 1 个工具链修复）：#335 / #336 / #337 已合并进 main，#338（工具链修复）仍在等待维护者评审与合并。另对 10 个开放任务逐一验证输入契约后做了可行性判定，均给出代码级结论。',
     statusEn:
-      'Four pull requests submitted (three agent onboardings plus one toolchain fix): #336 (cra-agent onboarding) has been merged into main; the other three — #335 and #337 (onboardings) and #338 (toolchain fix) — remain awaiting maintainer review and merge. Separately, ten open tasks were assessed for feasibility — each verified against its input contract, with a code-level conclusion for each.',
+      'Four pull requests submitted (three agent onboardings plus one toolchain fix): #335 / #336 / #337 have been merged into main; #338 (toolchain fix) remains awaiting maintainer review and merge. Separately, ten open tasks were assessed for feasibility — each verified against its input contract, with a code-level conclusion for each.',
     links: [
       { label: 'DefuzeX-AI/AgentBehaviorBench', url: 'https://github.com/DefuzeX-AI/AgentBehaviorBench', kind: 'repo' },
       { label: 'PR #335', url: 'https://github.com/DefuzeX-AI/AgentBehaviorBench/pull/335', kind: 'pr' },
