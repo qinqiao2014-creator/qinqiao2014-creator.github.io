@@ -150,6 +150,18 @@ const t = {
       '同一套场景 + 同一个后端，不为每个出口各写一份',
     ],
 
+    jupiterTitle: 'Jupiter · 裸眼 3D 相框',
+    jupiterDesc:
+      'distance 不止跑在屏幕里：我们把它做进了一台真实的裸眼 3D 相框。无需眼镜，光栅面板用 10 个原生视点把 distance 的星球、家园与故事直接「浮」在桌面上——你绕着走，画面就跟着变。',
+    jupiterFeatures: [
+      '自研上框 App（com.distance.spaceframe）：把 distance 打包成可直接装进相框安卓系统的应用，实物上电即看',
+      '六张 1200×1920 成品画面 + 十视点交错图集：星球、家园、全景各就各位，光栅面板原生分辨率铺满',
+      '三首内置音乐（抵达 / 家园 / 宇宙）：画面与声音一同在相框里循环',
+      '「故事模式」12 幕（S01–S12）：把 distance 的双线叙事《苏醒》做成逐帧 3D 分镜——两个灵魂在不同星球醒来，手里攥着同一枚星图残片，循着同一颗带环行星重逢',
+      '美术来源：Blender 程序化地貌与经典场景 · Tripo 生成叙事空间 3D 资产 · World Labs 泼溅世界；最终由 Jupiter Interlace SDK 交错成裸眼 3D',
+      '已交付实机验收：故事 S01 铺满版经设备实拍像素比对通过，与 v13 主应用各自版本共存',
+    ],
+
     coreTitle: '核心体验',
     core: [
       {
@@ -326,6 +338,18 @@ const t = {
       'Built on WebXR, natively supported by PICO OS 6 — immersive VR and passthrough AR, with controllers, hands and full-body tracking',
       'Validated in both flat and XR forms on the official PICO OS 6 environment',
       'One scene graph and one backend — no per-outlet duplicate implementations',
+    ],
+
+    jupiterTitle: 'Jupiter · Glasses-free 3D Frame',
+    jupiterDesc:
+      'distance does not only live on a screen: we built it into a real glasses-free 3D photo frame. No glasses needed — a lenticular panel with 10 native viewpoints floats distance\'s planets, homes and story right on your desk, and the picture shifts as you move around it.',
+    jupiterFeatures: [
+      'A custom frame app (com.distance.spaceframe): distance packaged into an app that installs straight onto the frame\'s Android system, running the moment it powers on',
+      'Six 1200×1920 final images plus a ten-viewpoint interlaced atlas: planets, homes and panoramas laid out at the panel\'s native resolution',
+      'Three built-in tracks (Arrival / Homestead / Universe): picture and sound loop together inside the frame',
+      '"Story mode" — 12 chapters (S01–S12): the distance two-thread narrative "Awakening" as frame-by-frame 3D storyboards — two souls wake on different planets, each clutching the same shard of a star chart, reuniting across a shared ringed planet',
+      'Art sources: Blender procedural terrain and classic scenes · Tripo-generated narrative-space 3D assets · World Labs splat worlds; finally interlaced into glasses-free 3D by the Jupiter Interlace SDK',
+      'Delivered and verified on-device: the full-bleed S01 story passed pixel-level device comparison, coexisting with the v13 main app as separate versions',
     ],
 
     coreTitle: 'Core Experience',
@@ -666,6 +690,30 @@ export function DistanceProject() {
                   className="font-noto text-sm text-text-muted flex items-start gap-2"
                 >
                   <span className="text-[#0f8b8d] mt-0.5">◆</span>
+                  {feat}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Jupiter · glasses-free 3D frame */}
+        <div className="max-w-content mx-auto px-5 mb-16">
+          <div className="p-6 rounded border border-[#f4a261]/20 bg-[#f4a261]/5">
+            <h2 className="font-noto font-bold text-xl text-text-primary mb-4 flex items-center gap-2">
+              <Boxes className="w-5 h-5 text-[#f4a261]" />
+              {c.jupiterTitle}
+            </h2>
+            <p className="font-noto text-sm text-text-secondary leading-relaxed mb-4">
+              {c.jupiterDesc}
+            </p>
+            <ul className="space-y-2">
+              {c.jupiterFeatures.map((feat, i) => (
+                <li
+                  key={i}
+                  className="font-noto text-sm text-text-muted flex items-start gap-2"
+                >
+                  <span className="text-[#f4a261] mt-0.5">◆</span>
                   {feat}
                 </li>
               ))}
