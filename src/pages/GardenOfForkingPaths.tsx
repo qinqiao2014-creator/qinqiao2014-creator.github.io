@@ -230,8 +230,8 @@ const works: WorkItem[] = [
             {
               t: '私有化对象存储（OSS）',
               e: 'Private object storage (OSS)',
-              d: '采集文件直传 OSS，医生端经后端流式代理读取，不落盘',
-              de: 'Captured files upload directly to OSS; doctors read streamed via backend proxy, nothing persisted locally',
+              d: '后端签发临时上传凭证，移动端持凭证直传 OSS；医生端经后端流式代理读取，不落盘',
+              de: 'Backend issues short-lived upload credentials; mobile uploads directly to OSS with them; doctors read streamed via backend proxy, nothing persisted locally',
             },
             {
               t: '甲方算法服务',
