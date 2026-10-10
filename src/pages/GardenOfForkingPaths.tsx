@@ -166,9 +166,9 @@ const works: WorkItem[] = [
     ],
     tech: ['Kotlin · Jetpack Compose', '移动端影像采集', 'Vue 3 · TypeScript', 'FastAPI · Python', '私有化部署'],
     architecture: {
-      caption: '模块化单体：三端 + 薄后端（FastAPI）+ 甲方算法服务，前端不直连算法，全部经后端统一出口',
+      caption: '采集 App 直接把影像上传到甲方私有对象存储（OSS），后端只存编号与校验值、不收文件本体；模块化单体：三端 + 薄后端（FastAPI）+ 甲方算法服务，前端不直连算法，全部经后端统一出口',
       captionEn:
-        'Modular monolith: three front-ends + a thin FastAPI backend + the client algorithm service; front-ends never call the algorithm directly, everything goes through the backend as the single outlet',
+        'The capture app uploads images straight to the client’s private object storage (OSS); the backend keeps only ids and checksums, never the file body. Modular monolith: three front-ends + a thin FastAPI backend + the client algorithm service; front-ends never call the algorithm directly, everything goes through the backend as the single outlet',
       flows: ['脊柱侧弯筛查', '通用体态评估（四视图）'],
       flowsEn: ['Scoliosis screening', 'General posture assessment (four-view)'],
       tiers: [
@@ -228,10 +228,10 @@ const works: WorkItem[] = [
           nameEn: 'On-prem storage + client algorithm service',
           boxes: [
             {
-              t: '私有化媒体存储',
-              e: 'On-prem media storage',
-              d: '采集文件直传，医生端经后端流式代理读取，不落盘',
-              de: 'Direct upload of captured files; doctors read streamed via backend, nothing persisted',
+              t: '私有化对象存储（OSS）',
+              e: 'Private object storage (OSS)',
+              d: '采集文件直传 OSS，医生端经后端流式代理读取，不落盘',
+              de: 'Captured files upload directly to OSS; doctors read streamed via backend proxy, nothing persisted locally',
             },
             {
               t: '甲方算法服务',
