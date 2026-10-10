@@ -46,6 +46,20 @@ type WorkItem = {
   // 荣誉 / 资质徽章（可选）：例如入选加速器计划、奖项等，显示在卡片标题上方
   badge?: string;
   badgeEn?: string;
+  // 架构展示（可选）：以能力级、不泄密的方式呈现系统结构
+  architecture?: {
+    caption: string;
+    captionEn: string;
+    flows: string[];
+    flowsEn: string[];
+    tiers: {
+      name: string;
+      nameEn: string;
+      boxes: { t: string; e: string; d?: string; de?: string }[];
+      note?: string;
+      noteEn?: string;
+    }[];
+  };
   links: WorkLink[];
 };
 
@@ -151,9 +165,87 @@ const works: WorkItem[] = [
       'Compliance: fully on-premise deployment with data never leaving the hospital; signed-off conclusions cannot be overwritten and every change is recorded.',
     ],
     tech: ['Kotlin · Jetpack Compose', '移动端影像采集', 'Vue 3 · TypeScript', 'FastAPI · Python', '私有化部署'],
-    status: '三端已打通，采集 → 复核 → 签发归档的完整流程跑通。按合同约定，甲方名称与业务细节不予披露。',
+    architecture: {
+      caption: '模块化单体：三端 + 薄后端（FastAPI）+ 甲方算法服务，前端不直连算法，全部经后端统一出口',
+      captionEn:
+        'Modular monolith: three front-ends + a thin FastAPI backend + the client algorithm service; front-ends never call the algorithm directly, everything goes through the backend as the single outlet',
+      flows: ['脊柱侧弯筛查', '通用体态评估（四视图）'],
+      flowsEn: ['Scoliosis screening', 'General posture assessment (four-view)'],
+      tiers: [
+        {
+          name: '三端',
+          nameEn: 'Three front-ends',
+          boxes: [
+            {
+              t: '安卓采集端',
+              e: 'Android capture',
+              d: '受检者建档 · 标准化采集 · 实时质控 · 弱网离线缓存',
+              de: 'Subject intake · standardized capture · live quality control · offline caching on weak networks',
+            },
+            {
+              t: '医生复核端',
+              e: 'Doctor review',
+              d: '关键点叠加可视化 · 逐例复核签发 · 双版报告',
+              de: 'Keypoint overlay · case-by-case review & sign-off · dual-version report',
+            },
+            {
+              t: '系统管理后台',
+              e: 'Admin console',
+              d: '机构账号 · 阈值配置 · 统计看板 · 审计',
+              de: 'Orgs & accounts · threshold config · stats dashboard · audit',
+            },
+          ],
+        },
+        {
+          name: '薄后端（FastAPI）',
+          nameEn: 'Thin backend (FastAPI)',
+          boxes: [
+            {
+              t: '业务编排与任务调度',
+              e: 'Orchestration & scheduling',
+              d: '授权 · 流程状态机 · 任务租约',
+              de: 'Auth · process state machine · task leasing',
+            },
+            {
+              t: '算法适配层（唯一出口）',
+              e: 'Algorithm adapter (single outlet)',
+              d: '输入编排 · 结果解析 · 风险查表 · 归一化',
+              de: 'Input orchestration · result parsing · risk lookup · normalization',
+            },
+            {
+              t: '报告与审计',
+              e: 'Reports & audit',
+              d: '带水印 PDF · 追加式审计事件',
+              de: 'Watermarked PDF · append-only audit trail',
+            },
+          ],
+          note: '只保存媒体元数据与校验值，不接收文件本体；结论签发后不可覆盖',
+          noteEn:
+            'Stores only media metadata and checksums — never the file body; signed-off results cannot be overwritten',
+        },
+        {
+          name: '私有化存储 + 甲方算法服务',
+          nameEn: 'On-prem storage + client algorithm service',
+          boxes: [
+            {
+              t: '私有化媒体存储',
+              e: 'On-prem media storage',
+              d: '采集文件直传，医生端经后端流式代理读取，不落盘',
+              de: 'Direct upload of captured files; doctors read streamed via backend, nothing persisted',
+            },
+            {
+              t: '甲方算法服务',
+              e: "Client's algorithm service",
+              d: '返回关键点 / 几何指标 / 风险等级 / 置信度',
+              de: 'Returns keypoints / geometric metrics / risk level / confidence',
+            },
+          ],
+        },
+      ],
+    },
+    status: '三端已打通，采集 → 复核 → 签发归档的完整流程跑通；两条业务线（脊柱侧弯筛查、通用体态评估）均已完成正式验收。按合同约定，甲方名称与业务细节不予披露。',
     statusEn:
-      'All three surfaces are connected, with the full capture → review → sign-off and archival flow working. Per contract, the client’s name and business details are not disclosed.',
+      'All three surfaces are connected, with the full capture → review → sign-off and archival flow working; both business lines (scoliosis screening, general posture assessment) have passed formal acceptance. Per contract, the client’s name and business details are not disclosed.',
     links: [],
   },
 ];
@@ -176,6 +268,7 @@ const t = {
     kindOss: '开源贡献',
     whatIDid: '做了什么',
     techStack: '技术栈',
+    architecture: '系统架构',
     statusLabel: '当前状态',
     reveal: '相关链接',
     countLabel: '个项目',
@@ -192,6 +285,7 @@ const t = {
     kindOss: 'Open Source',
     whatIDid: 'What I Did',
     techStack: 'Tech Stack',
+    architecture: 'Architecture',
     statusLabel: 'Status',
     reveal: 'Links',
     countLabel: 'projects',
@@ -329,6 +423,79 @@ export function GardenOfForkingPaths() {
                       </li>
                     ))}
                   </ul>
+
+                  {w.architecture && (() => {
+                    const arch = w.architecture;
+                    return (
+                    <div className="mb-8">
+                      <h3 className="font-noto font-bold text-base text-text-primary mb-1 flex items-center gap-2">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accent }} />
+                        {c.architecture}
+                      </h3>
+                      <p className="font-noto text-xs text-text-muted mb-4 leading-relaxed">
+                        {lang === 'zh' ? arch.caption : arch.captionEn}
+                      </p>
+
+                      {/* 业务线 */}
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {(lang === 'zh' ? arch.flows : arch.flowsEn).map((f, i) => (
+                          <span
+                            key={i}
+                            className="inline-block px-2.5 py-1 rounded-full text-xs font-noto"
+                            style={{
+                              backgroundColor: `${accent}14`,
+                              border: `1px solid ${accent}33`,
+                              color: accent,
+                            }}
+                          >
+                            {f}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* 分层架构 */}
+                      <div className="space-y-0">
+                        {arch.tiers.map((tier, ti) => (
+                          <div key={ti}>
+                            <div className="rounded border border-border-custom bg-bg-primary/40 p-4">
+                              <div className="font-noto text-xs text-text-muted mb-3">
+                                {lang === 'zh' ? tier.name : tier.nameEn}
+                              </div>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                {tier.boxes.map((b, bi) => (
+                                  <div
+                                    key={bi}
+                                    className="rounded p-3 border"
+                                    style={{ borderColor: `${accent}33`, background: `${accent}0d` }}
+                                  >
+                                    <div className="font-noto text-sm text-text-primary font-medium">
+                                      {lang === 'zh' ? b.t : b.e}
+                                    </div>
+                                    {b.d && (
+                                      <div className="font-noto text-xs text-text-muted mt-1 leading-snug">
+                                        {lang === 'zh' ? b.d : b.de}
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                              {tier.note && (
+                                <div className="font-noto text-xs text-text-muted mt-3 italic">
+                                  {lang === 'zh' ? tier.note : tier.noteEn}
+                                </div>
+                              )}
+                            </div>
+                            {ti < arch.tiers.length - 1 && (
+                              <div className="flex justify-center py-1.5">
+                                <div className="w-px h-5" style={{ backgroundColor: `${accent}66` }} />
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    );
+                  })()}
 
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Tech stack */}
