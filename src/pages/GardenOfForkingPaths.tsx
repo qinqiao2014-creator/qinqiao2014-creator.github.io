@@ -147,28 +147,28 @@ const works: WorkItem[] = [
     fieldEn: 'Healthcare / Medical Imaging Assisted Screening',
     year: '2026',
     intro:
-      'ScoliAssist —— 面向儿童青少年的脊柱侧弯智能辅助筛查系统。整体架构由我方自主设计实现：现场采集端、医生复核端、系统管理后台三端，以及衔接甲方 OSS 与算法服务的薄后端，均为我方从零搭建。模型推理与风险分级由甲方算法服务提供，经后端唯一出口接入。后端只做编排与鉴权，影像与报告都落在甲方私有 OSS，本身不存文件本体。边界很硬：只做辅助分诊，不替代医生诊断，一切结论须经医生人工复核。',
+      'ScoliAssist —— 面向儿童青少年的脊柱侧弯智能辅助筛查系统。整体架构由我方自主设计实现：现场采集端、医生复核端、系统管理后台三端，以及衔接甲方 OSS 与算法服务的薄后端，均为我方从零搭建。模型推理与风险分级由甲方算法服务提供，经后端唯一出口接入。后端只做编排与鉴权，影像与报告都落在甲方自有 OSS，本身不存文件本体。边界很硬：只做辅助分诊，不替代医生诊断，一切结论须经医生人工复核。',
     introEn:
-      'ScoliAssist — an AI-assisted scoliosis screening system for children and adolescents. The entire architecture was designed and built by my side: the three front-ends (on-site capture, doctor review, admin console) and the thin backend bridging the client’s OSS and algorithm service were all built from scratch. Model inference and risk grading come from the client’s algorithm service, integrated through a single backend outlet. The backend only does orchestration and auth — images and reports live in the client’s private OSS, and it stores no file bodies itself. The boundary is strict: assisted triage only — it never replaces a doctor’s diagnosis, and every conclusion must be reviewed and signed by a physician.',
+      'ScoliAssist — an AI-assisted scoliosis screening system for children and adolescents. The entire architecture was designed and built by my side: the three front-ends (on-site capture, doctor review, admin console) and the thin backend bridging the client’s OSS and algorithm service were all built from scratch. Model inference and risk grading come from the client’s algorithm service, integrated through a single backend outlet. The backend only does orchestration and auth — images and reports live in the client’s own OSS, and it stores no file bodies itself. The boundary is strict: assisted triage only — it never replaces a doctor’s diagnosis, and every conclusion must be reviewed and signed by a physician.',
     points: [
       '采集端（移动端）：受检者建档与标准化影像采集，拍摄过程带实时质控与离线缓存，弱网或无网的筛查现场也能完成采集。',
       '医生复核端：影像与关键点叠加可视化，医生逐例复核、修正并签发，输出可归档的报告。',
       '管理后台：机构与账号管理、筛查进度与统计看板、操作留痕可审计。',
       '很薄的后端：只承担授权与业务流程编排、元数据登记；影像与报告均存于甲方 OSS，后端不收文件本体、不按需生成报告，把甲方算法服务收敛为单一接入点。',
-      '合规：全链路私有化部署、数据不出院；结论签发后不可覆盖，所有变更留痕。',
+      '隐私与合规：影像与报告均存于甲方自有存储，我方不留文件副本；结论签发后不可覆盖，所有变更留痕。',
     ],
     pointsEn: [
       'Capture app (mobile): subject registration and standardized imaging, with real-time quality checks during shooting and offline caching — so screening can run at sites with weak or no connectivity.',
       'Doctor review console: images with keypoints overlaid, case-by-case review, correction and sign-off, producing an archivable report.',
       'Admin console: organization and account management, screening progress and statistics dashboards, and an auditable trail of operations.',
       'Very thin backend: handles authorization and business-flow orchestration plus metadata registration only; images and reports live in the client’s OSS, the backend stores no file bodies and generates no reports on demand, and it reduces the client’s algorithm service to a single integration point.',
-      'Compliance: fully on-premise deployment with data never leaving the hospital; signed-off conclusions cannot be overwritten and every change is recorded.',
+      'Privacy & compliance: images and reports stay in the client’s own storage — we keep no file copies; signed-off conclusions cannot be overwritten and every change is recorded.',
     ],
-    tech: ['Kotlin · Jetpack Compose', '移动端影像采集', 'Vue 3 · TypeScript', 'FastAPI · Python', '私有化部署'],
+    tech: ['Kotlin · Jetpack Compose', '移动端影像采集', 'Vue 3 · TypeScript', 'FastAPI · Python', 'OSS 直传'],
     architecture: {
-      caption: '采集 App 直接把影像上传到甲方私有对象存储（OSS），后端只存编号与校验值、不收文件本体；模块化单体：三端 + 薄后端（FastAPI）+ 甲方算法服务，前端不直连算法，全部经后端统一出口',
+      caption: '采集 App 直接把影像上传到甲方自有对象存储（OSS），后端只存编号与校验值、不收文件本体；模块化单体：三端 + 薄后端（FastAPI）+ 甲方算法服务，前端不直连算法，全部经后端统一出口',
       captionEn:
-        'The capture app uploads images straight to the client’s private object storage (OSS); the backend keeps only ids and checksums, never the file body. Modular monolith: three front-ends + a thin FastAPI backend + the client algorithm service; front-ends never call the algorithm directly, everything goes through the backend as the single outlet',
+        'The capture app uploads images straight to the client’s own object storage (OSS); the backend keeps only ids and checksums, never the file body. Modular monolith: three front-ends + a thin FastAPI backend + the client algorithm service; front-ends never call the algorithm directly, everything goes through the backend as the single outlet',
       flows: ['脊柱侧弯筛查', '通用体态评估（四视图）'],
       flowsEn: ['Scoliosis screening', 'General posture assessment (four-view)'],
       tiers: [
@@ -224,12 +224,12 @@ const works: WorkItem[] = [
             'Stores only media metadata and checksums — never the file body; reports are produced by a separate process and served straight from OSS, never generated on demand; signed-off results cannot be overwritten',
         },
         {
-          name: '私有化存储 + 甲方算法服务',
-          nameEn: 'On-prem storage + client algorithm service',
+          name: '甲方自有存储 + 甲方算法服务',
+          nameEn: 'Client-owned storage + client algorithm service',
           boxes: [
             {
-              t: '私有化对象存储（OSS）',
-              e: 'Private object storage (OSS)',
+              t: '甲方对象存储（OSS）',
+              e: 'Client object storage (OSS)',
               d: '后端签发临时上传凭证，移动端持凭证直传 OSS；医生端经后端流式代理读取，不落盘',
               de: 'Backend issues short-lived upload credentials; mobile uploads directly to OSS with them; doctors read streamed via backend proxy, nothing persisted locally',
             },
