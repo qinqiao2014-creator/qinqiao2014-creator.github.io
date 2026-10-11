@@ -8,7 +8,7 @@ const navt = {
     home: '阿早',
     projects: '我的项目',
     library: 'Skill',
-    garden: '小径分岔的花园',
+    garden: '合作项目',
     ogcp: 'OGCP',
     walking: '走路修仙',
     academy: '无限学园',
@@ -21,7 +21,7 @@ const navt = {
     home: 'Zaosusu',
     projects: 'My Projects',
     library: 'Skill',
-    garden: 'The Garden of Forking Paths',
+    garden: 'Collaborations',
     ogcp: 'OGCP',
     walking: 'WalkingXiuxian',
     academy: 'Infinite Academy',
@@ -110,16 +110,6 @@ export function Navbar() {
             )}
           </div>
 
-          {/* The Garden of Forking Paths */}
-          <Link
-            to="/garden-of-forking-paths"
-            className={`font-noto text-sm transition-colors duration-200 ${
-              isGardenPage ? 'text-text-primary' : 'text-text-muted hover:text-[#9bd8cf]'
-            }`}
-          >
-            {c.garden}
-          </Link>
-
           {/* Library of Babel */}
           <Link
             to="/library-of-babel"
@@ -128,6 +118,16 @@ export function Navbar() {
             }`}
           >
             {c.library}
+          </Link>
+
+          {/* The Garden of Forking Paths */}
+          <Link
+            to="/garden-of-forking-paths"
+            className={`font-noto text-sm transition-colors duration-200 ${
+              isGardenPage ? 'text-text-primary' : 'text-text-muted hover:text-[#9bd8cf]'
+            }`}
+          >
+            {c.garden}
           </Link>
 
           <button
@@ -159,7 +159,7 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-bg-primary/95 backdrop-blur-xl border-t border-border-custom px-5 py-4 space-y-3">
-          {/* 我的项目 —— 与桌面导航同序同口径：我的项目 ▾ / 小径分岔的花园 / Skill */}
+          {/* 我的项目 —— 与桌面导航同序同口径：我的项目 ▾ / Skill / 合作项目 */}
           <div
             className={`font-noto text-xs tracking-wider ${
               isProjectPage ? 'text-text-primary' : 'text-text-muted/70'
@@ -182,15 +182,6 @@ export function Navbar() {
             ))}
           </div>
           <Link
-            to="/garden-of-forking-paths"
-            className={`block font-noto text-sm ${
-              isGardenPage ? 'text-text-primary' : 'text-text-muted'
-            }`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {c.garden}
-          </Link>
-          <Link
             to="/library-of-babel"
             className={`block font-noto text-sm ${
               location.pathname === '/library-of-babel' ? 'text-text-primary' : 'text-text-muted'
@@ -198,6 +189,15 @@ export function Navbar() {
             onClick={() => setMobileOpen(false)}
           >
             {c.library}
+          </Link>
+          <Link
+            to="/garden-of-forking-paths"
+            className={`block font-noto text-sm ${
+              isGardenPage ? 'text-text-primary' : 'text-text-muted'
+            }`}
+            onClick={() => setMobileOpen(false)}
+          >
+            {c.garden}
           </Link>
         </div>
       )}
