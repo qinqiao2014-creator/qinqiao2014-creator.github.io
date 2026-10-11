@@ -112,12 +112,12 @@ const works: WorkItem[] = [
     fieldEn: 'Smart Hardware / Exhibition Guidance',
     year: '2026',
     intro:
-      '为超大型展会做的眼镜端导览助手：参观者戴着眼镜，中英文开口就能问路、找展位、查展商、做同传，全程不用掏手机。工程上前后端分离——眼镜端是一个 APK，设备控制面是独立的后台服务：现场每副眼镜的配置与可用工具都在后台统一管理，改完即时下发到设备，不用重发安装包。',
+      '为超大型展会做的眼镜端导览助手：参观者戴着眼镜，中英文开口就能问路、找展位、查展商、做同传，全程不用掏手机。整体架构由我方自主设计实现——眼镜端 APK 与独立设备控制面、室内外导航、视觉识别与同声传译（ASR / TTS / LLM 模型层能力）的端侧集成，均为我方从零搭建。工程上前后端分离：眼镜端是一个 APK，设备控制面是独立的后台服务，现场每副眼镜的配置与可用工具都在后台统一管理，改完即时下发到设备，不用重发安装包。',
     introEn:
-      'An on-glasses guide built for a very large trade fair: wearing the glasses, visitors ask for directions, find booths, look up exhibitors and get live interpretation — in Chinese or English, entirely by voice, without pulling out a phone. The system is split front-to-back: the glasses run a single APK, while a separate backend acts as the device control plane — configuration and available tools for every pair on site are managed there and pushed down to the device right away, with no re-issued install package.',
+      'An on-glasses guide built for a very large trade fair: wearing the glasses, visitors ask for directions, find booths, look up exhibitors and get live interpretation — in Chinese or English, entirely by voice, without pulling out a phone. The entire architecture was designed and built by my side: the glasses APK, the standalone device control plane, and the on-device integration of indoor/outdoor navigation, visual recognition and live interpretation (ASR / TTS / LLM model-layer capabilities) were all built from scratch. The system is split front-to-back: the glasses run a single APK, while a separate backend acts as the device control plane — configuration and available tools for every pair on site are managed there and pushed down to the device right away, with no re-issued install package.',
     points: [
       '眼镜端一体化：语音唤醒即用，问路、找展位、查展商、同声传译都用开口完成，全程不掏手机、不必低头看手机。',
-      '室内导航（已完成架构重构）：超大场馆逐级带路（当前馆 → 目标展位），屏上文字与方位提示同步语音播报。地图改为服务端生成、按版本发布的专用地图包，眼镜端按需同步并本地缓存，断网也能用，更新地图无需重发安装包；路线基于整馆验证图与本地化通道标签规划。',
+      '室内导航：超大场馆逐级带路（当前馆 → 目标展位），屏上文字与方位提示同步语音播报。地图为服务端生成、按版本发布的专用地图包，眼镜端按需同步并本地缓存，更新地图无需重发安装包；路线基于整馆验证图与本地化通道标签规划。',
       '室外导航：接入实景定位与路线规划，从到达路径一路导到展馆入口，同样以屏幕文字与语音同步提示。',
       '展商检索：拍下展位或招牌即可查出参展商并直接问答；识别不清或未收录时如实提示，不编造信息。',
       '设备控制面：每副眼镜的配置、版本与可用工具由后台统一管理并即时下发，现场无需逐台设置。',
@@ -147,9 +147,9 @@ const works: WorkItem[] = [
     fieldEn: 'Healthcare / Medical Imaging Assisted Screening',
     year: '2026',
     intro:
-      'ScoliAssist —— 面向儿童青少年的脊柱侧弯智能辅助筛查系统，三端协同：现场采集端、医生复核端、系统管理后台。我方承担三个前端与一个很薄的后端；模型推理与风险分级由甲方算法服务提供，经后端唯一出口接入。后端只做编排与鉴权，影像与报告都落在甲方私有 OSS，本身不存文件本体。边界很硬：只做辅助分诊，不替代医生诊断，一切结论须经医生人工复核。',
+      'ScoliAssist —— 面向儿童青少年的脊柱侧弯智能辅助筛查系统。整体架构由我方自主设计实现：现场采集端、医生复核端、系统管理后台三端，以及衔接甲方 OSS 与算法服务的薄后端，均为我方从零搭建。模型推理与风险分级由甲方算法服务提供，经后端唯一出口接入。后端只做编排与鉴权，影像与报告都落在甲方私有 OSS，本身不存文件本体。边界很硬：只做辅助分诊，不替代医生诊断，一切结论须经医生人工复核。',
     introEn:
-      'ScoliAssist — an AI-assisted scoliosis screening system for children and adolescents, spanning three surfaces: on-site capture, doctor review, and an admin console. My side delivered the three front ends plus a very thin backend; model inference and risk grading come from the client’s algorithm service, integrated through a single backend outlet. The backend only does orchestration and auth — images and reports live in the client’s private OSS, and it stores no file bodies itself. The boundary is strict: assisted triage only — it never replaces a doctor’s diagnosis, and every conclusion must be reviewed and signed by a physician.',
+      'ScoliAssist — an AI-assisted scoliosis screening system for children and adolescents. The entire architecture was designed and built by my side: the three front-ends (on-site capture, doctor review, admin console) and the thin backend bridging the client’s OSS and algorithm service were all built from scratch. Model inference and risk grading come from the client’s algorithm service, integrated through a single backend outlet. The backend only does orchestration and auth — images and reports live in the client’s private OSS, and it stores no file bodies itself. The boundary is strict: assisted triage only — it never replaces a doctor’s diagnosis, and every conclusion must be reviewed and signed by a physician.',
     points: [
       '采集端（移动端）：受检者建档与标准化影像采集，拍摄过程带实时质控与离线缓存，弱网或无网的筛查现场也能完成采集。',
       '医生复核端：影像与关键点叠加可视化，医生逐例复核、修正并签发，输出可归档的报告。',
