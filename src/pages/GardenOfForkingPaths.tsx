@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, Award, ExternalLink, Github, GitPullRequest, Lock } from 'lucide-react';
 
 // ============================================================================
-// 合作项目 —— 为他人做的项目总集（商业委托 + 开源贡献）
+// 小径分岔的花园（The Garden of Forking Paths）—— 为他人做的项目总集（商业委托 + 开源贡献）
 //
 // 两类都直接列在这一页，不再拆二级栏目：
 //   · client  商业委托 —— 匿名脱敏：只写行业 + 做了什么 + 技术栈 + 成果，
@@ -258,7 +258,7 @@ const orderedWorks = [...works].sort((a, b) => kindRank[a.kind] - kindRank[b.kin
 const t = {
   zh: {
     back: '返回首页',
-    heroTitle: '合作项目',
+    heroTitle: '小径分岔的花园',
     heroSubtitle: '商业委托 · 开源贡献',
     subtitle: '在别人的迷宫里落子',
     heroDesc:
@@ -275,7 +275,7 @@ const t = {
   },
   en: {
     back: 'Back to Home',
-    heroTitle: 'Collaborations',
+    heroTitle: 'The Garden of Forking Paths',
     heroSubtitle: 'Client commissions · open-source contributions',
     subtitle: "Moves made inside others' mazes",
     heroDesc:

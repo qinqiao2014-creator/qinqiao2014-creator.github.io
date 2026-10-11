@@ -8,7 +8,7 @@ const navt = {
     home: '阿早',
     projects: '我的项目',
     library: 'Skill',
-    garden: '合作项目',
+    garden: '小径分岔的花园',
     ogcp: 'OGCP',
     walking: '走路修仙',
     academy: '无限学园',
@@ -21,7 +21,7 @@ const navt = {
     home: 'Zaosusu',
     projects: 'My Projects',
     library: 'Skill',
-    garden: 'Collaborations',
+    garden: 'The Garden of Forking Paths',
     ogcp: 'OGCP',
     walking: 'WalkingXiuxian',
     academy: 'Infinite Academy',
@@ -159,7 +159,7 @@ export function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-bg-primary/95 backdrop-blur-xl border-t border-border-custom px-5 py-4 space-y-3">
-          {/* 我的项目 —— 与桌面导航同序同口径：我的项目 ▾ / 合作项目 / Skill */}
+          {/* 我的项目 —— 与桌面导航同序同口径：我的项目 ▾ / 小径分岔的花园 / Skill */}
           <div
             className={`font-noto text-xs tracking-wider ${
               isProjectPage ? 'text-text-primary' : 'text-text-muted/70'
