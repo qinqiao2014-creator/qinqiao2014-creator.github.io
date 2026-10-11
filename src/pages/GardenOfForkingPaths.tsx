@@ -117,7 +117,7 @@ const works: WorkItem[] = [
       'An on-glasses guide built for a very large trade fair: wearing the glasses, visitors ask for directions, find booths, look up exhibitors and get live interpretation — in Chinese or English, entirely by voice, without pulling out a phone. The system is split front-to-back: the glasses run a single APK, while a separate backend acts as the device control plane — configuration and available tools for every pair on site are managed there and pushed down to the device right away, with no re-issued install package.',
     points: [
       '眼镜端一体化：语音唤醒即用，问路、找展位、查展商、同声传译都用开口完成，全程不掏手机、不必低头看手机。',
-      '室内导航：在超大场馆里逐级带路（当前馆 → 目标展位），眼镜屏上给出文字与方位提示，同时用语音播报——看屏、听声都能走；不清楚自己位置时可用拍照辅助确认。',
+      '室内导航（已完成架构重构）：超大场馆逐级带路（当前馆 → 目标展位），屏上文字与方位提示同步语音播报。地图改为服务端生成、按版本发布的专用地图包，眼镜端按需同步并本地缓存，断网也能用，更新地图无需重发安装包；路线基于整馆验证图与本地化通道标签规划。',
       '室外导航：接入实景定位与路线规划，从到达路径一路导到展馆入口，同样以屏幕文字与语音同步提示。',
       '展商检索：拍下展位或招牌即可查出参展商并直接问答；识别不清或未收录时如实提示，不编造信息。',
       '设备控制面：每副眼镜的配置、版本与可用工具由后台统一管理并即时下发，现场无需逐台设置。',
@@ -125,7 +125,7 @@ const works: WorkItem[] = [
     ],
     pointsEn: [
       'Integrated on the glasses: usable right after a voice wake-up — directions, booth finding, exhibitor lookup and live interpretation are all done by speaking, with no phone in hand and no need to look down at one.',
-      'Indoor navigation: guides the visitor step by step through a very large venue (current hall → target booth), showing text and directional cues on the glasses display while announcing the same guidance by voice — follow it by looking or by listening; a photo can help confirm position when it is unclear.',
+      'Indoor navigation (architecturally rebuilt): guides the visitor step by step through a very large venue (current hall → target booth), with on-screen text and directional cues announced by voice. Maps are now server-generated, versioned packages that the glasses sync on demand and cache locally — usable offline, and updatable without re-issuing the APK; routes are planned over a fully validated hall graph with localized aisle labels.',
       'Outdoor navigation: real positioning and routing, guiding from the arrival route all the way to the venue entrance, with on-screen text and voice prompts in step.',
       'Exhibitor lookup: photograph a booth or signboard to identify the exhibitor and ask questions directly; unclear or unlisted results are reported honestly, never fabricated.',
       'Device control plane: each pair’s configuration, version and available tools are managed centrally and pushed to the device immediately — no per-unit setup on site.',
@@ -147,21 +147,21 @@ const works: WorkItem[] = [
     fieldEn: 'Healthcare / Medical Imaging Assisted Screening',
     year: '2026',
     intro:
-      'ScoliAssist —— 面向儿童青少年的脊柱侧弯智能辅助筛查系统，三端协同：现场采集端、医生复核端、系统管理后台。我方承担三个前端与一个薄后端；模型推理与风险分级由甲方算法服务提供，经后端唯一出口接入。边界很硬：只做辅助分诊，不替代医生诊断，一切结论须经医生人工复核。',
+      'ScoliAssist —— 面向儿童青少年的脊柱侧弯智能辅助筛查系统，三端协同：现场采集端、医生复核端、系统管理后台。我方承担三个前端与一个很薄的后端；模型推理与风险分级由甲方算法服务提供，经后端唯一出口接入。后端只做编排与鉴权，影像与报告都落在甲方私有 OSS，本身不存文件本体。边界很硬：只做辅助分诊，不替代医生诊断，一切结论须经医生人工复核。',
     introEn:
-      'ScoliAssist — an AI-assisted scoliosis screening system for children and adolescents, spanning three surfaces: on-site capture, doctor review, and an admin console. My side delivered the three front ends plus a thin backend; model inference and risk grading come from the client’s algorithm service, integrated through a single backend outlet. The boundary is strict: assisted triage only — it never replaces a doctor’s diagnosis, and every conclusion must be reviewed and signed by a physician.',
+      'ScoliAssist — an AI-assisted scoliosis screening system for children and adolescents, spanning three surfaces: on-site capture, doctor review, and an admin console. My side delivered the three front ends plus a very thin backend; model inference and risk grading come from the client’s algorithm service, integrated through a single backend outlet. The backend only does orchestration and auth — images and reports live in the client’s private OSS, and it stores no file bodies itself. The boundary is strict: assisted triage only — it never replaces a doctor’s diagnosis, and every conclusion must be reviewed and signed by a physician.',
     points: [
       '采集端（移动端）：受检者建档与标准化影像采集，拍摄过程带实时质控与离线缓存，弱网或无网的筛查现场也能完成采集。',
       '医生复核端：影像与关键点叠加可视化，医生逐例复核、修正并签发，输出可归档的报告。',
       '管理后台：机构与账号管理、筛查进度与统计看板、操作留痕可审计。',
-      '薄后端：串联授权、业务流程、任务调度、结果存储与报告生成，并把甲方算法服务收敛为单一接入点。',
+      '很薄的后端：只承担授权与业务流程编排、元数据登记；影像与报告均存于甲方 OSS，后端不收文件本体、不按需生成报告，把甲方算法服务收敛为单一接入点。',
       '合规：全链路私有化部署、数据不出院；结论签发后不可覆盖，所有变更留痕。',
     ],
     pointsEn: [
       'Capture app (mobile): subject registration and standardized imaging, with real-time quality checks during shooting and offline caching — so screening can run at sites with weak or no connectivity.',
       'Doctor review console: images with keypoints overlaid, case-by-case review, correction and sign-off, producing an archivable report.',
       'Admin console: organization and account management, screening progress and statistics dashboards, and an auditable trail of operations.',
-      'Thin backend: ties together authorization, business flow, task scheduling, result storage and report generation, and reduces the client’s algorithm service to a single integration point.',
+      'Very thin backend: handles authorization and business-flow orchestration plus metadata registration only; images and reports live in the client’s OSS, the backend stores no file bodies and generates no reports on demand, and it reduces the client’s algorithm service to a single integration point.',
       'Compliance: fully on-premise deployment with data never leaving the hospital; signed-off conclusions cannot be overwritten and every change is recorded.',
     ],
     tech: ['Kotlin · Jetpack Compose', '移动端影像采集', 'Vue 3 · TypeScript', 'FastAPI · Python', '私有化部署'],
@@ -219,9 +219,9 @@ const works: WorkItem[] = [
               de: 'Watermarked PDF · append-only audit trail',
             },
           ],
-          note: '只保存媒体元数据与校验值，不接收文件本体；结论签发后不可覆盖',
+          note: '只保存媒体元数据与校验值，不接收文件本体；报告由独立进程生成并直出 OSS，后端不按需生成；结论签发后不可覆盖',
           noteEn:
-            'Stores only media metadata and checksums — never the file body; signed-off results cannot be overwritten',
+            'Stores only media metadata and checksums — never the file body; reports are produced by a separate process and served straight from OSS, never generated on demand; signed-off results cannot be overwritten',
         },
         {
           name: '私有化存储 + 甲方算法服务',
