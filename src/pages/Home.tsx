@@ -10,6 +10,7 @@ import { resolveStars } from '../lib/resolveStars';
 type Translation = {
   heroTitle: string;
   heroSubtitle: string;
+  heroHonor: string;
   heroDesc: string;
   heroCta: string;
   heroEpigraph: string;
@@ -70,6 +71,7 @@ const t: Record<'zh' | 'en', Translation> = {
   zh: {
     heroTitle: '阿早',
     heroSubtitle: '独立AI研究者 · 开源实践者',
+    heroHonor: '南京艺术学院建校以来第一个人工智能工程师',
     heroDesc: '15年商业历练后转型技术，相信"不依赖人"的系统才是未来。',
     heroCta: '查看项目',
     heroEpigraph: '「我总想象，天堂应是图书馆的模样。」 —— 博尔赫斯',
@@ -212,6 +214,7 @@ const t: Record<'zh' | 'en', Translation> = {
   en: {
     heroTitle: 'Zaosusu',
     heroSubtitle: 'Independent AI Researcher · Open Source Practitioner',
+    heroHonor: 'The first AI engineer since the founding of Nanjing University of the Arts',
     heroDesc: '15 years in business before pivoting to tech. Believing systems that don\'t depend on people are the future.',
     heroCta: 'View Projects',
     heroEpigraph: '"I have always imagined that Paradise will be a kind of library." — Borges',
@@ -433,9 +436,13 @@ export function Home() {
             <p className="font-serif-lit italic text-base md:text-lg text-text-secondary/90 mb-7 leading-relaxed border-l-2 border-[#6cbcb2]/40 pl-4 max-w-xl">
               {c.heroEpigraph}
             </p>
-            <div className="inline-flex items-center gap-2 rounded border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 px-3 py-1.5 text-xs text-[#9bd8cf] mb-7">
+            <div className="inline-flex items-center gap-2 rounded border border-[#6cbcb2]/30 bg-[#6cbcb2]/10 px-3 py-1.5 text-xs text-[#9bd8cf] mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span className="font-noto">{c.heroSubtitle}</span>
+            </div>
+            <div className="inline-flex items-center gap-2 rounded border border-[#e6b450]/40 bg-[#e6b450]/10 px-3 py-1.5 text-xs text-[#caa14a] mb-7">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="font-noto font-medium">{c.heroHonor}</span>
             </div>
             <div className="flex items-center gap-5 mb-5">
               <h1 className="font-serif-lit font-bold text-7xl md:text-9xl text-text-primary leading-[1.02] [text-shadow:0_0_60px_rgba(108,188,178,0.30)]">
