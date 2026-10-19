@@ -207,7 +207,7 @@ const t = {
     teamTitle: '团队',
     teamNote: '两支比赛队伍，成员不完全重合',
     teamGroupA: 'AdventureX 2026',
-    teamGroupADesc: '中国最大黑客松 · 杭州 2026.7 · PICO 赛道',
+    teamGroupADesc: '中国最大黑客松 · PICO 赛道',
     team: [
       { name: '周雨涵', role: '产品 / UI / UX', color: '#ffc08e' },
       { name: '詹丽', role: '视觉传达', color: '#e9818d' },
@@ -397,7 +397,7 @@ const t = {
     teamTitle: 'Team',
     teamNote: 'Two competition squads with partially overlapping members',
     teamGroupA: 'AdventureX 2026',
-    teamGroupADesc: 'the largest hackathon in China · Hangzhou 2026.7 · PICO track',
+    teamGroupADesc: 'the largest hackathon in China · PICO track',
     team: [
       { name: 'Zhou Yuhan', role: 'Product / UI / UX', color: '#ffc08e' },
       { name: 'Zhan Li', role: 'Visual Design', color: '#e9818d' },
