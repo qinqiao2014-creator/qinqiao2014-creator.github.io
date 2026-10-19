@@ -207,8 +207,7 @@ const t = {
     teamTitle: '团队',
     teamNote: '两支比赛队伍，成员不完全重合',
     teamGroupA: 'AdventureX 2026',
-    teamGroupADesc: '黑客松 · PICO 赛道',
-    teamGroupAAward: '第二名',
+    teamGroupADesc: '中国最大黑客松 · 杭州 2026.7 · PICO 赛道',
     team: [
       { name: '周雨涵', role: '产品 / UI / UX', color: '#ffc08e' },
       { name: '詹丽', role: '视觉传达', color: '#e9818d' },
@@ -217,7 +216,6 @@ const t = {
     ],
     teamGroupB: 'Tripothon S1',
     teamGroupBDesc: 'Tripo AI 世界构建黑客松 · 主题 A Gift for ____',
-    teamGroupBAward: 'XR 赛道第三名',
     teamB: [
       { name: '阿早', role: '总负责人', color: '#ffe0bd' },
       { name: '史登会', role: '队员', color: '#8fb8e8' },
@@ -399,8 +397,7 @@ const t = {
     teamTitle: 'Team',
     teamNote: 'Two competition squads with partially overlapping members',
     teamGroupA: 'AdventureX 2026',
-    teamGroupADesc: 'Hackathon · PICO track',
-    teamGroupAAward: '2nd place',
+    teamGroupADesc: 'the largest hackathon in China · Hangzhou 2026.7 · PICO track',
     team: [
       { name: 'Zhou Yuhan', role: 'Product / UI / UX', color: '#ffc08e' },
       { name: 'Zhan Li', role: 'Visual Design', color: '#e9818d' },
@@ -409,7 +406,6 @@ const t = {
     ],
     teamGroupB: 'Tripothon S1',
     teamGroupBDesc: 'Tripo AI world-building hackathon · theme A Gift for ____',
-    teamGroupBAward: '3rd place, XR track',
     teamB: [
       { name: 'Zaosusu', role: 'Team Lead', color: '#ffe0bd' },
       { name: 'Shi Denghui', role: 'Team member', color: '#8fb8e8' },
@@ -783,16 +779,13 @@ export function DistanceProject() {
           <p className="font-noto text-sm text-text-muted mb-6">{c.teamNote}</p>
 
           {[
-            { name: c.teamGroupA, desc: c.teamGroupADesc, award: c.teamGroupAAward, members: c.team },
-            { name: c.teamGroupB, desc: c.teamGroupBDesc, award: c.teamGroupBAward, members: c.teamB },
+            { name: c.teamGroupA, desc: c.teamGroupADesc, members: c.team },
+            { name: c.teamGroupB, desc: c.teamGroupBDesc, members: c.teamB },
           ].map((group, gi) => (
             <div key={gi} className={gi > 0 ? 'mt-8' : ''}>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4 pb-3 border-b border-border-custom">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 mb-4 pb-3 border-b border-border-custom">
                 <h3 className="font-noto font-semibold text-base text-text-primary">{group.name}</h3>
                 <span className="font-noto text-xs text-text-muted">{group.desc}</span>
-                <span className="sm:ml-auto inline-block px-2 py-0.5 rounded text-xs font-noto whitespace-nowrap bg-[#0f8b8d]/12 text-[#0f8b8d] border border-[#0f8b8d]/25">
-                  {group.award}
-                </span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {group.members.map((member, i) => (
