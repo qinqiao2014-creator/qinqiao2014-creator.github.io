@@ -37,7 +37,7 @@ const t = {
     back: '返回首页',
     title: 'distance',
     subtitle: '光年尺度下，人与人之间关系的距离',
-    tag: 'AdventureX 2026 PICO 赛道第二名 · Tripothon S1 XR 赛道第三名',
+    tag: 'AdventureX 2026 PICO 赛道第二名 · Tripothon S1 中国赛区上海站 XR 赛道第三名 · 全球总榜 Top100',
     desc: 'distance 是一个 AI-native 的动态关系宇宙：你的出生、地点、教育、工作、项目、技能、记忆，以及你和他人的双向行为，会被编译成个人图谱，持续影响星球质量、关系强度、空间距离与 3D 宇宙布局——关系变淡，那颗星球就真的变暗、漂远。',
     status: '团队作品 · 主站 distance3d.xyz · XR 出口 xr.distance3d.xyz',
     cta: '产品介绍视频',
@@ -53,9 +53,9 @@ const t = {
         note: 'PICO 赛道 第二名 · 优胜 Web 应用创作者。distance 的第一版在这里完成并拿奖。',
       },
       {
-        badge: 'v2 · 已获奖',
+        badge: 'v2 · 已获奖 · 全球 Top100',
         title: 'Tripothon S1',
-        note: 'Tripo AI 主办的全球首届「世界构建黑客松」，主题 A Gift for ____——创造一个世界，把它当作礼物送给某个人。distance 以现在的完整形态（三层尺度 + 家园 + 生态星球）参赛，斩获 XR 赛道第三名。',
+        note: 'Tripo AI 主办的全球首届「世界构建黑客松」，主题 A Gift for ____——创造一个世界，把它当作礼物送给某个人。distance 以现在的完整形态（三层尺度 + 家园 + 生态星球）参赛，在中国赛区上海站斩获 XR 赛道第三名，并跻身赛事全球总榜 Top100。',
       },
     ],
 
@@ -227,7 +227,7 @@ const t = {
     back: 'Back to Home',
     title: 'distance',
     subtitle: 'The Distance Between People, at the Scale of Light-Years',
-    tag: 'AdventureX 2026 — 2nd Place, PICO Track · Tripothon S1 XR Track 3rd Place',
+    tag: 'AdventureX 2026 — 2nd Place, PICO Track · Tripothon S1 Shanghai, China XR Track 3rd Place · Global Top 100',
     desc: 'distance is an AI-native dynamic relationship universe. Your birth, location, education, work, projects, skills, memories — and the two-way behavior between you and others — are compiled into a personal graph that continuously drives planet mass, relationship strength, spatial distance and the 3D universe layout. When a relationship fades, that planet really does dim and drift away.',
     status: 'Team Project · Site distance3d.xyz · XR at xr.distance3d.xyz',
     cta: 'Product Video',
@@ -243,9 +243,9 @@ const t = {
         note: '2nd Place, PICO Track · Outstanding Web App Creator. The first version of distance was completed and awarded here.',
       },
       {
-        badge: 'v2 · Won',
+        badge: 'v2 · Won · Global Top 100',
         title: 'Tripothon S1',
-        note: "Tripo AI's first global world-building hackathon, themed A Gift for ____ — build a world and give it to someone as a gift. distance entered in its current full form (three scales, homesteads, ecological planets) and took 3rd Place in the XR Track.",
+        note: "Tripo AI's first global world-building hackathon, themed A Gift for ____ — build a world and give it to someone as a gift. distance entered in its current full form (three scales, homesteads, ecological planets), took 3rd Place in the Shanghai, China XR Track, and ranked in the Global Top 100 overall.",
       },
     ],
 
