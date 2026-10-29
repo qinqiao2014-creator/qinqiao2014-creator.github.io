@@ -50,12 +50,14 @@ const t = {
       {
         badge: 'v1 · 已获奖',
         title: 'AdventureX 2026',
-        note: 'PICO 赛道 第二名 · 优胜 Web 应用创作者。distance 的第一版在这里完成并拿奖。',
+        note: '中国最大黑客松。distance 的第一版在这里完成并参赛。',
+        honors: ['PICO 赛道 第二名', '优胜 Web 应用创作者'],
       },
       {
-        badge: 'v2 · 已获奖 · 全球 Top100',
+        badge: 'v2 · 已获奖',
         title: 'Tripothon S1',
-        note: 'Tripo AI 主办的全球首届「世界构建黑客松」，主题 A Gift for ____——创造一个世界，把它当作礼物送给某个人。distance 以现在的完整形态（三层尺度 + 家园 + 生态星球）参赛，在中国赛区上海站斩获 XR 赛道第三名，并跻身赛事全球总榜 Top100。',
+        note: 'Tripo AI 主办的全球首届「世界构建黑客松」，主题 A Gift for ____——创造一个世界，把它当作礼物送给某个人。distance 以现在的完整形态（三层尺度 + 家园 + 生态星球）参赛。',
+        honors: ['中国赛区上海站 · XR 赛道第三名', '全球总榜 Top100'],
       },
     ],
 
@@ -240,12 +242,14 @@ const t = {
       {
         badge: 'v1 · Won',
         title: 'AdventureX 2026',
-        note: '2nd Place, PICO Track · Outstanding Web App Creator. The first version of distance was completed and awarded here.',
+        note: 'The largest hackathon in China. The first version of distance was completed and entered here.',
+        honors: ['2nd Place, PICO Track', 'Outstanding Web App Creator'],
       },
       {
-        badge: 'v2 · Won · Global Top 100',
+        badge: 'v2 · Won',
         title: 'Tripothon S1',
-        note: "Tripo AI's first global world-building hackathon, themed A Gift for ____ — build a world and give it to someone as a gift. distance entered in its current full form (three scales, homesteads, ecological planets), took 3rd Place in the Shanghai, China XR Track, and ranked in the Global Top 100 overall.",
+        note: "Tripo AI's first global world-building hackathon, themed A Gift for ____ — build a world and give it to someone as a gift. distance entered in its current full form (three scales, homesteads, ecological planets).",
+        honors: ['Shanghai, China — 3rd Place, XR Track', 'Global Top 100'],
       },
     ],
 
@@ -506,6 +510,17 @@ export function DistanceProject() {
                   <h3 className="font-noto font-semibold text-base text-text-primary">{a.title}</h3>
                 </div>
                 <p className="font-noto text-sm text-text-secondary leading-relaxed">{a.note}</p>
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {a.honors.map((h, hi) => (
+                    <div
+                      key={hi}
+                      className="flex items-center gap-2 px-3 py-2 rounded bg-[#0f8b8d]/8 border border-[#0f8b8d]/20"
+                    >
+                      <Award className="w-3.5 h-3.5 text-[#0f8b8d] shrink-0" />
+                      <span className="font-noto text-sm text-text-primary">{h}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
