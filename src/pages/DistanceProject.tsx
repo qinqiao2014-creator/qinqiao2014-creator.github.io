@@ -51,7 +51,7 @@ const t = {
         badge: 'v1 · 已获奖',
         title: 'AdventureX 2026',
         note: '中国最大黑客松。distance 的第一版在这里完成并参赛。',
-        honors: ['PICO 赛道 第二名', '优胜 Web 应用创作者'],
+        honors: ['PICO 赛道 第二名 · 优胜 Web 应用创作者'],
       },
       {
         badge: 'v2 · 已获奖',
@@ -243,7 +243,7 @@ const t = {
         badge: 'v1 · Won',
         title: 'AdventureX 2026',
         note: 'The largest hackathon in China. The first version of distance was completed and entered here.',
-        honors: ['2nd Place, PICO Track', 'Outstanding Web App Creator'],
+        honors: ['2nd Place, PICO Track · Outstanding Web App Creator'],
       },
       {
         badge: 'v2 · Won',
@@ -510,7 +510,7 @@ export function DistanceProject() {
                   <h3 className="font-noto font-semibold text-base text-text-primary">{a.title}</h3>
                 </div>
                 <p className="font-noto text-sm text-text-secondary leading-relaxed">{a.note}</p>
-                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {a.honors.map((h, hi) => (
                     <div
                       key={hi}
