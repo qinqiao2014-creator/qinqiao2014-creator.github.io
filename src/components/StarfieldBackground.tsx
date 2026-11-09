@@ -173,18 +173,23 @@ export function StarfieldBackground({
           else if (s.y > h + 3) s.y = -3;
         }
         const a = reduce ? s.base : s.base * (0.5 + 0.5 * Math.sin(time * s.tw + s.phase));
+        // 光晕用叠加的半透明圆实现，不用 canvas shadowBlur：
+        // iOS Safari(WebKit) 在 dpr 缩放下会把 shadowBlur 放大成大片畸形光斑并残留拖影，
+        // 而 Blink(安卓/桌面) 渲染正常 —— 这是两端观感差异的根源。
+        if (s.accent) {
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * 2.8, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(108,188,178,${a * 0.14})`;
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * 1.7, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(160,222,213,${a * 0.26})`;
+          ctx.fill();
+        }
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        if (s.accent) {
-          ctx.fillStyle = `rgba(160,222,213,${a})`;
-          ctx.shadowColor = 'rgba(108,188,178,0.85)';
-          ctx.shadowBlur = s.r * (s.anchor ? 5 : 3.5);
-        } else {
-          ctx.fillStyle = `rgba(244,241,232,${a})`;
-          ctx.shadowBlur = 0;
-        }
+        ctx.fillStyle = s.accent ? `rgba(160,222,213,${a})` : `rgba(244,241,232,${a})`;
         ctx.fill();
-        ctx.shadowBlur = 0;
       }
 
       // 流星
@@ -220,13 +225,15 @@ export function StarfieldBackground({
           ctx.lineTo(tx, ty);
           ctx.stroke();
 
+          // 流星头部同样用叠加圆代替 shadowBlur，避免 iOS Safari 的光斑
+          ctx.beginPath();
+          ctx.arc(m.x, m.y, 5.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(155,216,207,${alpha * 0.22})`;
+          ctx.fill();
           ctx.beginPath();
           ctx.arc(m.x, m.y, 1.9, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-          ctx.shadowColor = 'rgba(155,216,207,0.9)';
-          ctx.shadowBlur = 10;
           ctx.fill();
-          ctx.shadowBlur = 0;
         }
       }
 
